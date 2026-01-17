@@ -32,7 +32,7 @@ function SplitHeroSection() {
       variants={staggerContainer}
       initial="hidden"
       animate="show"
-      className="h-screen snap-start w-full flex flex-col md:flex-row"
+      className="min-h-screen md:h-screen md:snap-start w-full flex flex-col md:flex-row"
     >
       <SplitHeroPanel
         side="left"
@@ -88,20 +88,13 @@ interface SplitHeroPanelProps {
 }
 
 function SplitHeroPanel({ side, image, overlayColor, overlayOpacity, title, description, link, linkText, textColor, descColor, btnBg, btnText, btnHoverBg, btnHoverText }: SplitHeroPanelProps) {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <motion.div
       variants={fadeInUp}
-      className="relative flex-1 min-h-[50vh] md:min-h-full flex items-center justify-center overflow-hidden cursor-pointer group"
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
-      onClick={() => setIsOpen(!isOpen)}
+      className="relative flex-1 h-auto py-20 md:py-0 md:min-h-full flex items-center justify-center overflow-hidden group"
     >
       <motion.div
         className="absolute inset-0"
-        animate={{ scale: isOpen ? 1.1 : 1 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
       >
         <Image 
           src={image} 
@@ -115,39 +108,33 @@ function SplitHeroPanel({ side, image, overlayColor, overlayOpacity, title, desc
       <div 
         className="absolute inset-0 transition-all duration-500 ease-out" 
         style={{ 
-          backgroundColor: overlayColor, 
-          opacity: isOpen ? 0.9 : overlayOpacity 
+          backgroundColor: overlayColor,
+          opacity: overlayOpacity + 0.2 // A bit more opaque to ensure text is readable
         }} 
       />
       
       <motion.div layout="position" className="relative z-10 text-center px-6 py-12 max-w-xl">
-        <motion.h1 layout="position" className="font-montserrat font-extrabold text-4xl sm:text-5xl md:text-6xl uppercase mb-4 leading-tight" style={{ color: textColor }}>
+        <motion.h1 layout="position" className="font-montserrat font-extrabold text-3xl sm:text-5xl md:text-6xl uppercase mb-4 leading-tight" style={{ color: textColor }}>
           {title}
         </motion.h1>
-        
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-            >
-              <p className="font-inter text-lg mb-8 font-semibold" style={{ color: descColor || textColor }}>
-                {description}
-              </p>
-              
-              <Link
-                href={link}
-                className={`inline-flex items-center gap-3 px-8 py-4 font-montserrat font-semibold text-sm uppercase tracking-wider rounded transition-all duration-300 active:scale-95`}
-                style={{ backgroundColor: btnBg, color: btnText }}
-              >
-                {linkText} <ArrowRight size={20} />
-              </Link>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <p className="font-inter text-lg mb-8 font-semibold" style={{ color: descColor || textColor }}>
+            {description}
+          </p>
+          
+          <Link
+            href={link}
+            className={`inline-flex items-center gap-3 px-8 py-4 font-montserrat font-semibold text-sm uppercase tracking-wider rounded transition-all duration-300 active:scale-95`}
+            style={{ backgroundColor: btnBg, color: btnText }}
+          >
+            {linkText} <ArrowRight size={20} />
+          </Link>
+        </motion.div>
       </motion.div>
     </motion.div>
   );
@@ -155,7 +142,7 @@ function SplitHeroPanel({ side, image, overlayColor, overlayOpacity, title, desc
 
 function NexusSection() {
   return (
-    <section className="h-screen snap-start w-full bg-[#F4F4F9] flex items-center justify-center px-6">
+    <section className="min-h-screen md:snap-start w-full bg-[#F4F4F9] flex items-center justify-center py-16 md:py-24 px-6">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -223,7 +210,7 @@ function StatsSection() {
   ];
 
   return (
-    <section className="h-screen snap-start w-full bg-gradient-to-br from-[#040F2D] via-[#1a2847] to-[#040F2D] flex items-center justify-center px-6 relative overflow-hidden">
+    <section className="min-h-screen md:snap-start w-full bg-gradient-to-br from-[#040F2D] via-[#1a2847] to-[#040F2D] flex items-center justify-center py-16 md:py-24 px-6 relative overflow-hidden">
       <div
         className="absolute inset-0 opacity-10"
         style={{
@@ -303,7 +290,7 @@ function ServicesAccordionSection() {
   ];
 
   return (
-    <section className="h-screen snap-start w-full bg-gradient-to-b from-white to-[#F4F4F9] flex items-center justify-center px-6 relative overflow-hidden">
+    <section className="min-h-screen md:snap-start w-full bg-gradient-to-b from-white to-[#F4F4F9] flex items-center justify-center py-16 md:py-24 px-6 relative overflow-hidden">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -426,7 +413,7 @@ function MarketGapSection() {
   ];
 
   return (
-    <section className="h-screen snap-start w-full bg-[#F4F4F9] flex items-center justify-center px-6">
+    <section className="min-h-screen md:snap-start w-full bg-[#F4F4F9] flex items-center justify-center py-16 md:py-24 px-6">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -544,7 +531,7 @@ function NewsletterSection() {
   };
 
   return (
-    <section className="h-screen snap-start flex flex-col bg-[#040F2D]">
+    <section className="min-h-screen md:snap-start flex flex-col bg-[#040F2D] py-20">
       <div className="flex-grow w-full bg-[#DFA236] flex items-center justify-center px-6 relative overflow-hidden pt-24 pb-4">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle, #040F2D 2px, transparent 2px)", backgroundSize: "60px 60px" }} />
 

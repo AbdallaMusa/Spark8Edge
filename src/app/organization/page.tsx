@@ -12,7 +12,7 @@ import { siteConfig } from "@/config/site";
 
 export default function Organization() {
   return (
-    <>
+    <div className="bg-[#040F2D]">
       <Navbar />
       <main>
         <HeroSection />
@@ -21,7 +21,7 @@ export default function Organization() {
         <CaseStudiesSection />
         <ConsultationFormSection />
       </main>
-    </>
+    </div>
   );
 }
 
@@ -45,7 +45,7 @@ function DataGapSection() {
   ];
 
   return (
-    <section className="h-screen snap-start w-full bg-[#F4F4F9] flex items-center justify-center px-6 overflow-hidden">
+    <section className="min-h-screen md:snap-start w-full bg-[#F4F4F9] flex items-center justify-center py-16 md:py-24 px-6 overflow-hidden">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -129,7 +129,7 @@ function ServicesSuiteSection() {
 
   return (
     <section 
-      className="h-screen snap-start w-full bg-gradient-to-b from-[#040F2D] to-[#0a1847] flex items-center justify-center px-6 py-20 overflow-hidden"
+      className="min-h-screen md:snap-start w-full bg-gradient-to-b from-[#040F2D] to-[#0a1847] flex items-center justify-center px-6 py-16 md:py-24 overflow-hidden"
       aria-labelledby="services-heading"
     >
       <motion.div
@@ -257,7 +257,7 @@ function CaseStudiesSection() {
   ];
 
   return (
-    <section className="h-screen snap-start w-full bg-[#F4F4F9] flex items-center justify-center px-6 overflow-hidden">
+    <section className="min-h-screen md:snap-start w-full bg-[#F4F4F9] flex items-center justify-center py-16 md:py-24 px-6 overflow-hidden">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -377,13 +377,14 @@ function ConsultationFormSection() {
   };
 
   return (
-    <section id="consultation-form" className="min-h-screen snap-start w-full bg-[#040F2D] flex flex-col relative">
+    <section id="consultation-form" className="min-h-screen md:snap-start bg-[#040F2D] relative flex flex-col overflow-hidden pb-0">
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#DFA236]/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4 pointer-events-none" />
       
-      <div className="flex-grow w-full max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-12 gap-12 lg:gap-20 items-center relative z-10 px-6 py-20">
-        <div className="lg:col-span-5 text-center lg:text-left">
-          <motion.div variants={fadeInUp}>
+      <div className="flex-grow w-full flex flex-col">
+        <div className="flex-grow w-full max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-12 gap-12 lg:gap-20 items-center relative z-10 px-6 py-16 lg:py-24">
+          <div className="lg:col-span-5 text-center lg:text-left">
+            <motion.div variants={fadeInUp}>
             <span className="inline-block px-4 py-1.5 rounded-full border border-[#DFA236]/30 bg-[#DFA236]/10 text-[#DFA236] font-montserrat text-xs font-bold uppercase tracking-widest mb-6">
               Let's Collaborate
             </span>
@@ -394,10 +395,10 @@ function ConsultationFormSection() {
             <p className="font-inter text-lg text-gray-300 leading-relaxed max-w-md mx-auto lg:mx-0">
               Let's discuss how our AI-powered solutions can future-proof your brand's narrative and deliver measurable ROI.
             </p>
-          </motion.div>
-        </div>
+            </motion.div>
+          </div>
 
-        <div className="lg:col-span-7 w-full">
+          <div className="lg:col-span-7 w-full">
           <motion.form
             variants={fadeInUp}
             onSubmit={handleSubmit}
@@ -462,33 +463,27 @@ function ConsultationFormSection() {
               </motion.div>
             )}
           </motion.form>
+          </div>
         </div>
-      </div>
 
-      <div className="w-full border-t border-white/5 bg-[#040F2D]/80 backdrop-blur-md relative z-20">
-        <Footer />
+        <div className="w-full border-t border-white/5 bg-[#040F2D] relative z-20">
+          <Footer />
+        </div>
       </div>
     </section>
   );
 }
 function HeroSection() {
-  const [isOpen, setIsOpen] = useState(false);
-
   const scrollToForm = () => {
     document.getElementById("consultation-form")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
-      onClick={() => setIsOpen(!isOpen)}
-      className="h-screen snap-start w-full flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen md:snap-start w-full flex items-center justify-center relative overflow-hidden px-6 py-16 md:py-24"
     >
       <motion.div
         className="absolute inset-0"
-        animate={{ scale: isOpen ? 1.1 : 1 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
       >
         <Image
           src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070"
@@ -501,7 +496,7 @@ function HeroSection() {
       </motion.div>
       <div 
         className="absolute inset-0 bg-[#040F2D] transition-opacity duration-500 ease-out"
-        style={{ opacity: isOpen ? 0.95 : 0.85 }}
+        style={{ opacity: 0.85 }}
       />
       
       <motion.div
@@ -517,31 +512,22 @@ function HeroSection() {
           Future-Proof Your Narrative.
         </motion.h1>
         
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="overflow-hidden"
-            >
-              <motion.p
-                variants={fadeInUp}
-                className="font-inter text-lg md:text-xl lg:text-2xl text-[#F4F4F9] mb-8 md:mb-12 leading-relaxed"
-              >
-                We combine human creativity with AI efficiency to deliver measurable ROI.
-              </motion.p>
-              <motion.button
-                variants={fadeInUp}
-                onClick={(e) => { e.stopPropagation(); scrollToForm(); }}
-                className="inline-flex items-center gap-3 px-8 py-4 md:px-10 md:py-5 bg-[#DFA236] text-[#040F2D] font-montserrat font-semibold text-xs md:text-sm uppercase tracking-wider rounded hover:bg-white transition-all duration-300 active:scale-95"
-              >
-                Request Consultation <ArrowDown size={20} />
-              </motion.button>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <motion.div
+          variants={fadeInUp}
+          className="overflow-hidden"
+        >
+          <p
+            className="font-inter text-lg md:text-xl lg:text-2xl text-[#F4F4F9] mb-8 md:mb-12 leading-relaxed"
+          >
+            We combine human creativity with AI efficiency to deliver measurable ROI.
+          </p>
+          <button
+            onClick={(e) => { e.stopPropagation(); scrollToForm(); }}
+            className="inline-flex items-center gap-3 px-8 py-4 md:px-10 md:py-5 bg-[#DFA236] text-[#040F2D] font-montserrat font-semibold text-xs md:text-sm uppercase tracking-wider rounded hover:bg-white transition-all duration-300 active:scale-95"
+          >
+            Request Consultation <ArrowDown size={20} />
+          </button>
+        </motion.div>
 
       </motion.div>
     </section>

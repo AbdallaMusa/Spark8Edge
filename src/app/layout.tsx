@@ -17,12 +17,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://spark8edge.co.ke'),
+  metadataBase: new URL("https://spark8edge.co.ke"),
   title: {
-    default: 'Spark8Edge',
-    template: '%s | Spark8Edge'
+    default: "Spark8Edge",
+    template: "%s | Spark8Edge",
   },
-  description: 'Empowering Kenya’s Next Generation through AI & Strategic Brand Intelligence.',
+  description:
+    "Empowering Kenya’s Next Generation through AI & Strategic Brand Intelligence.",
   icons: {
     icon: [{ url: "/icons.svg", type: "image/svg+xml" }],
     shortcut: ["/icons.svg"],
@@ -36,14 +37,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="snap-y snap-mandatory overflow-y-scroll">
-      <body
-        className={`${montserrat.variable} ${inter.variable} antialiased`}
-      >
+    <html lang="en" className="overflow-y-scroll md:snap-y md:snap-mandatory">
+      <body className={`${montserrat.variable} ${inter.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem
+          defaultTheme="light"
           disableTransitionOnChange
         >
           <ScrollProgressBar />
