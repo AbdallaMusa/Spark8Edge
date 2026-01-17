@@ -13,6 +13,6 @@ export const siteConfig = {
     whatsapp: "https://wa.me/254727712711", // Add your number if known
   },
   security: {
-    turnstileSiteKey: "0x4AAAAAAACHHASIDKNYMAXXH",
+    turnstileSiteKey: "0x4AAAAAACMhAS1DKNYMAxXh",
   },
 };
