@@ -40,7 +40,7 @@ export function ScrollProgressBar() {
 
   return (
     <motion.div
-      className="fixed top-1/2 right-4 md:right-6 transform -translate-y-1/2 z-50"
+      className="fixed top-1/2 right-4 md:right-6 transform -translate-y-1/2 z-50 hidden md:flex"
       animate={{ opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 0.3 }}
     >
@@ -48,10 +48,15 @@ export function ScrollProgressBar() {
         {Array.from({ length: numSections }).map((_, i) => {
           const isActive = i === activeIndex;
           return (
-            <motion.div key={i} className="w-2 h-2 rounded-full" animate={{
-              backgroundColor: isActive ? "#DFA236" : "#9DB3CC",
-              scale: isActive ? 1.75 : 1,
-            }} transition={{ duration: 0.3, ease: "easeOut" }} />
+            <motion.div
+              key={i}
+              className="w-2 h-2 rounded-full"
+              animate={{
+                backgroundColor: isActive ? "#DFA236" : "#9DB3CC",
+                scale: isActive ? 1.75 : 1,
+              }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            />
           );
         })}
       </div>
