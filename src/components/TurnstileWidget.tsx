@@ -13,7 +13,7 @@ export function TurnstileWidget({ onVerify }: TurnstileWidgetProps) {
   const siteKey = siteConfig.security.turnstileSiteKey;
 
   // This check specifically looks for the default placeholder key.
-  const isPlaceholder = siteKey === "0x4AAAAAACMhAS1DKNYMAxXh";
+  const isPlaceholder = siteKey === "0x4AAAAAAACHHASIDKNYMAXXH";
 
   if (!siteKey || isPlaceholder) {
     console.error("Cloudflare Turnstile site key is not configured. Using a placeholder.");
