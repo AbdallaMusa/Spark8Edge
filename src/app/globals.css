@@ -1,5 +1,4 @@
 /* Updated: 2025-12-16T10:00:38.919Z */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -8,13 +7,13 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: 'Inter', sans-serif;
-  --font-heading: 'Montserrat', sans-serif;
-  --color-navy: #040F2D;
-  --color-gold: #DFA236;
-  --color-light: #F4F4F9;
-  --color-pure: #FFFFFF;
-  --color-slate: #6D8299;
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Montserrat", sans-serif;
+  --color-navy: #040f2d;
+  --color-gold: #dfa236;
+  --color-light: #f4f4f9;
+  --color-pure: #ffffff;
+  --color-slate: #6d8299;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -55,71 +54,71 @@
 
 :root {
   --radius: 0.625rem;
-  --background: #F4F4F9;
-  --foreground: #040F2D;
-  --card: #FFFFFF;
-  --card-foreground: #040F2D;
-  --popover: #FFFFFF;
-  --popover-foreground: #040F2D;
-  --primary: #040F2D;
-  --primary-foreground: #FFFFFF;
-  --secondary: #DFA236;
-  --secondary-foreground: #040F2D;
-  --muted: #F4F4F9;
-  --muted-foreground: #6D8299;
-  --accent: #DFA236;
-  --accent-foreground: #040F2D;
+  --background: #f4f4f9;
+  --foreground: #040f2d;
+  --card: #ffffff;
+  --card-foreground: #040f2d;
+  --popover: #ffffff;
+  --popover-foreground: #040f2d;
+  --primary: #040f2d;
+  --primary-foreground: #ffffff;
+  --secondary: #dfa236;
+  --secondary-foreground: #040f2d;
+  --muted: #f4f4f9;
+  --muted-foreground: #6d8299;
+  --accent: #dfa236;
+  --accent-foreground: #040f2d;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #E5E7EB;
-  --input: #E5E7EB;
-  --ring: #DFA236;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #dfa236;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: #FFFFFF;
-  --sidebar-foreground: #040F2D;
-  --sidebar-primary: #040F2D;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #DFA236;
-  --sidebar-accent-foreground: #040F2D;
-  --sidebar-border: #E5E7EB;
-  --sidebar-ring: #DFA236;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #040f2d;
+  --sidebar-primary: #040f2d;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #dfa236;
+  --sidebar-accent-foreground: #040f2d;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #dfa236;
 }
 
 .dark {
-  --background: #040F2D;
-  --foreground: #FFFFFF;
-  --card: #0A1A3D;
-  --card-foreground: #FFFFFF;
-  --popover: #0A1A3D;
-  --popover-foreground: #FFFFFF;
-  --primary: #DFA236;
-  --primary-foreground: #040F2D;
-  --secondary: #1A2B4D;
-  --secondary-foreground: #FFFFFF;
-  --muted: #1A2B4D;
-  --muted-foreground: #6D8299;
-  --accent: #DFA236;
-  --accent-foreground: #040F2D;
+  --background: #040f2d;
+  --foreground: #ffffff;
+  --card: #0a1a3d;
+  --card-foreground: #ffffff;
+  --popover: #0a1a3d;
+  --popover-foreground: #ffffff;
+  --primary: #dfa236;
+  --primary-foreground: #040f2d;
+  --secondary: #1a2b4d;
+  --secondary-foreground: #ffffff;
+  --muted: #1a2b4d;
+  --muted-foreground: #6d8299;
+  --accent: #dfa236;
+  --accent-foreground: #040f2d;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: #1A2B4D;
-  --input: #1A2B4D;
-  --ring: #DFA236;
+  --border: #1a2b4d;
+  --input: #1a2b4d;
+  --ring: #dfa236;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: #0A1A3D;
-  --sidebar-foreground: #FFFFFF;
-  --sidebar-primary: #DFA236;
-  --sidebar-primary-foreground: #040F2D;
-  --sidebar-accent: #1A2B4D;
-  --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: #1A2B4D;
-  --sidebar-ring: #DFA236;
+  --sidebar: #0a1a3d;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #dfa236;
+  --sidebar-primary-foreground: #040f2d;
+  --sidebar-accent: #1a2b4d;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #1a2b4d;
+  --sidebar-ring: #dfa236;
 }
 
 @layer base {
@@ -128,10 +127,15 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
   }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Montserrat", sans-serif;
     text-transform: uppercase;
   }
 }
@@ -140,15 +144,15 @@
   h1 {
     font-size: clamp(1.75rem, 5vh, 3.75rem) !important;
   }
-  
+
   h2 {
     font-size: clamp(1.5rem, 4vh, 3rem) !important;
   }
-  
+
   h3 {
     font-size: clamp(1.125rem, 3vh, 1.875rem) !important;
   }
-  
+
   p {
     font-size: clamp(0.875rem, 2vh, 1.125rem) !important;
   }
