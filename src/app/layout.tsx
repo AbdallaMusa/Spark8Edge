@@ -3,6 +3,7 @@ import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { ThemeProvider } from "./ThemeProvider";
+import { Analytics } from "@vercel/analytics/next";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -46,6 +47,7 @@ export default function RootLayout({
         >
           <ScrollProgressBar />
           {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
