@@ -28,12 +28,7 @@ export default function Home() {
 
 function SplitHeroSection() {
   return (
-    <motion.section
-      variants={staggerContainer}
-      initial="hidden"
-      animate="show"
-      className="min-h-screen md:h-screen md:snap-start w-full flex flex-col md:flex-row"
-    >
+    <section className="min-h-screen md:h-screen md:snap-start w-full flex flex-col md:flex-row">
       <SplitHeroPanel
         side="left"
         image="https://images.unsplash.com/photo-1633114072836-15d933c6d3a7?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -66,7 +61,7 @@ function SplitHeroSection() {
         btnHoverBg="white"
         btnHoverText="#040F2D"
       />
-    </motion.section>
+    </section>
   );
 }
 
@@ -89,13 +84,8 @@ interface SplitHeroPanelProps {
 
 function SplitHeroPanel({ side, image, overlayColor, overlayOpacity, title, description, link, linkText, textColor, descColor, btnBg, btnText, btnHoverBg, btnHoverText }: SplitHeroPanelProps) {
   return (
-    <motion.div
-      variants={fadeInUp}
-      className="relative flex-1 h-auto py-20 md:py-0 md:min-h-full flex items-center justify-center overflow-hidden group"
-    >
-      <motion.div
-        className="absolute inset-0"
-      >
+    <div className="relative flex-1 h-auto py-20 md:py-0 md:min-h-full flex items-center justify-center overflow-hidden group">
+      <div className="absolute inset-0">
         <Image 
           src={image} 
           alt={title} 
@@ -104,7 +94,7 @@ function SplitHeroPanel({ side, image, overlayColor, overlayOpacity, title, desc
           priority
           sizes="(max-width: 768px) 100vw, 50vw"
         />
-      </motion.div>
+      </div>
       <div 
         className="absolute inset-0 transition-all duration-500 ease-out" 
         style={{ 
@@ -113,15 +103,20 @@ function SplitHeroPanel({ side, image, overlayColor, overlayOpacity, title, desc
         }} 
       />
       
-      <motion.div layout="position" className="relative z-10 text-center px-6 py-12 max-w-xl">
-        <motion.h1 layout="position" className="font-montserrat font-extrabold text-3xl sm:text-5xl md:text-6xl uppercase mb-4 leading-tight" style={{ color: textColor }}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="relative z-10 text-center px-6 py-12 max-w-xl"
+      >
+        <h1 className="font-montserrat font-extrabold text-3xl sm:text-5xl md:text-6xl uppercase mb-4 leading-tight" style={{ color: textColor }}>
           {title}
-        </motion.h1>
+        </h1>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
         >
           <p className="font-inter text-lg mb-8 font-semibold" style={{ color: descColor || textColor }}>
             {description}
@@ -136,7 +131,7 @@ function SplitHeroPanel({ side, image, overlayColor, overlayOpacity, title, desc
           </Link>
         </motion.div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
 
