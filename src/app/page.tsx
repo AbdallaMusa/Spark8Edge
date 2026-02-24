@@ -43,6 +43,7 @@ function SplitHeroSection() {
         btnText="white"
         btnHoverBg="#DFA236"
         btnHoverText="#040F2D"
+        priority={true}
       />
 
       <SplitHeroPanel
@@ -60,6 +61,7 @@ function SplitHeroSection() {
         btnText="#040F2D"
         btnHoverBg="white"
         btnHoverText="#040F2D"
+        priority={false}
       />
     </section>
   );
@@ -80,6 +82,7 @@ interface SplitHeroPanelProps {
   btnText: string;
   btnHoverBg: string;
   btnHoverText: string;
+  priority?: boolean;
 }
 
 function SplitHeroPanel({
@@ -97,6 +100,7 @@ function SplitHeroPanel({
   btnText,
   btnHoverBg,
   btnHoverText,
+  priority = false,
 }: SplitHeroPanelProps) {
   return (
     <div className="relative flex-1 h-auto py-20 md:py-0 md:min-h-full flex items-center justify-center overflow-hidden group">
@@ -106,7 +110,7 @@ function SplitHeroPanel({
           alt={title}
           fill
           className="object-cover"
-          priority
+          priority={priority}
           sizes="(max-width: 768px) 100vw, 50vw"
         />
       </div>
