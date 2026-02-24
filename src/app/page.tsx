@@ -28,12 +28,7 @@ export default function Home() {
 
 function SplitHeroSection() {
   return (
-    <motion.section
-      variants={staggerContainer}
-      initial="hidden"
-      animate="show"
-      className="min-h-screen md:h-screen md:snap-start w-full flex flex-col md:flex-row"
-    >
+    <section className="min-h-screen md:h-screen md:snap-start w-full flex flex-col md:flex-row">
       <SplitHeroPanel
         side="left"
         image="https://images.unsplash.com/photo-1633114072836-15d933c6d3a7?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -66,7 +61,7 @@ function SplitHeroSection() {
         btnHoverBg="white"
         btnHoverText="#040F2D"
       />
-    </motion.section>
+    </section>
   );
 }
 
@@ -87,46 +82,58 @@ interface SplitHeroPanelProps {
   btnHoverText: string;
 }
 
-function SplitHeroPanel({ side, image, overlayColor, overlayOpacity, title, description, link, linkText, textColor, descColor, btnBg, btnText, btnHoverBg, btnHoverText }: SplitHeroPanelProps) {
+function SplitHeroPanel({
+  side,
+  image,
+  overlayColor,
+  overlayOpacity,
+  title,
+  description,
+  link,
+  linkText,
+  textColor,
+  descColor,
+  btnBg,
+  btnText,
+  btnHoverBg,
+  btnHoverText,
+}: SplitHeroPanelProps) {
   return (
-    <motion.div
-      variants={fadeInUp}
-      className="relative flex-1 h-auto py-20 md:py-0 md:min-h-full flex items-center justify-center overflow-hidden group"
-    >
-      <motion.div
-        className="absolute inset-0"
-      >
-        <Image 
-          src={image} 
-          alt={title} 
-          fill 
+    <div className="relative flex-1 h-auto py-20 md:py-0 md:min-h-full flex items-center justify-center overflow-hidden group">
+      <div className="absolute inset-0">
+        <Image
+          src={image}
+          alt={title}
+          fill
           className="object-cover"
           priority
           sizes="(max-width: 768px) 100vw, 50vw"
         />
-      </motion.div>
-      <div 
-        className="absolute inset-0 transition-all duration-500 ease-out" 
-        style={{ 
+      </div>
+      <div
+        className="absolute inset-0 transition-all duration-500 ease-out"
+        style={{
           backgroundColor: overlayColor,
-          opacity: overlayOpacity + 0.2 // A bit more opaque to ensure text is readable
-        }} 
+          opacity: overlayOpacity + 0.2, // A bit more opaque to ensure text is readable
+        }}
       />
-      
-      <motion.div layout="position" className="relative z-10 text-center px-6 py-12 max-w-xl">
-        <motion.h1 layout="position" className="font-montserrat font-extrabold text-3xl sm:text-5xl md:text-6xl uppercase mb-4 leading-tight" style={{ color: textColor }}>
-          {title}
-        </motion.h1>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+      <div className="relative z-10 text-center px-6 py-12 max-w-xl">
+        <h1
+          className="font-montserrat font-extrabold text-3xl sm:text-5xl md:text-6xl uppercase mb-4 leading-tight"
+          style={{ color: textColor }}
         >
-          <p className="font-inter text-lg mb-8 font-semibold" style={{ color: descColor || textColor }}>
+          {title}
+        </h1>
+
+        <div>
+          <p
+            className="font-inter text-lg mb-8 font-semibold"
+            style={{ color: descColor || textColor }}
+          >
             {description}
           </p>
-          
+
           <Link
             href={link}
             className={`inline-flex items-center gap-3 px-8 py-4 font-montserrat font-semibold text-sm uppercase tracking-wider rounded transition-all duration-300 active:scale-95`}
@@ -134,9 +141,9 @@ function SplitHeroPanel({ side, image, overlayColor, overlayOpacity, title, desc
           >
             {linkText} <ArrowRight size={20} />
           </Link>
-        </motion.div>
-      </motion.div>
-    </motion.div>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -150,15 +157,15 @@ function NexusSection() {
         viewport={{ once: true, amount: 0.2 }}
         className="max-w-6xl mx-auto w-full"
       >
-        <motion.div
-          variants={fadeInUp}
-          className="text-center mb-12"
-        >
+        <motion.div variants={fadeInUp} className="text-center mb-12">
           <h2 className="font-montserrat font-extrabold text-4xl md:text-5xl text-[#040F2D] uppercase mb-6">
             Where Talent Meets Opportunity
           </h2>
           <p className="font-inter text-lg md:text-xl text-[#6D8299] max-w-3xl mx-auto leading-relaxed">
-            Spark8Edge bridges East Africa's creative ecosystem with global markets. We cultivate exceptional talent through cutting-edge training while delivering enterprise-grade brand solutions powered by artificial intelligence and human creativity.
+            Spark8Edge bridges East Africa's creative ecosystem with global
+            markets. We cultivate exceptional talent through cutting-edge
+            training while delivering enterprise-grade brand solutions powered
+            by artificial intelligence and human creativity.
           </p>
         </motion.div>
 
@@ -168,9 +175,13 @@ function NexusSection() {
             className="relative p-10 bg-white rounded-lg border-4 border-transparent transition-all duration-500 overflow-hidden"
           >
             <Sparkles size={48} className="text-[#DFA236] mb-6" />
-            <h3 className="font-montserrat font-bold text-2xl text-[#040F2D] uppercase mb-4">Youth Development</h3>
+            <h3 className="font-montserrat font-bold text-2xl text-[#040F2D] uppercase mb-4">
+              Youth Development
+            </h3>
             <p className="font-inter text-[#6D8299] text-lg leading-relaxed">
-              Intensive bootcamps in emerging technologies, creative production, and business strategy designed to transform ambitious youth into industry leaders.
+              Intensive bootcamps in emerging technologies, creative production,
+              and business strategy designed to transform ambitious youth into
+              industry leaders.
             </p>
           </motion.div>
 
@@ -179,9 +190,13 @@ function NexusSection() {
             className="relative p-10 bg-white rounded-lg border-4 border-transparent transition-all duration-500 overflow-hidden"
           >
             <Target size={48} className="text-[#040F2D] mb-6" />
-            <h3 className="font-montserrat font-bold text-2xl text-[#040F2D] uppercase mb-4">Enterprise Solutions</h3>
+            <h3 className="font-montserrat font-bold text-2xl text-[#040F2D] uppercase mb-4">
+              Enterprise Solutions
+            </h3>
             <p className="font-inter text-[#6D8299] text-lg leading-relaxed">
-              Intelligent PR systems, strategic communications, and curated talent networks that give organizations competitive advantage in the digital age.
+              Intelligent PR systems, strategic communications, and curated
+              talent networks that give organizations competitive advantage in
+              the digital age.
             </p>
           </motion.div>
         </div>
@@ -195,17 +210,20 @@ function StatsSection() {
     {
       icon: Target,
       title: "Innovation First",
-      description: "Pioneering the intersection of African creativity and global technology standards",
+      description:
+        "Pioneering the intersection of African creativity and global technology standards",
     },
     {
       icon: Users,
       title: "Youth Empowerment",
-      description: "Building bridges between untapped potential and transformative opportunities",
+      description:
+        "Building bridges between untapped potential and transformative opportunities",
     },
     {
       icon: Sparkles,
       title: "Excellence Driven",
-      description: "Delivering world-class training and services that exceed international benchmarks",
+      description:
+        "Delivering world-class training and services that exceed international benchmarks",
     },
   ];
 
@@ -214,7 +232,8 @@ function StatsSection() {
       <div
         className="absolute inset-0 opacity-10"
         style={{
-          backgroundImage: "radial-gradient(circle, #DFA236 1px, transparent 1px)",
+          backgroundImage:
+            "radial-gradient(circle, #DFA236 1px, transparent 1px)",
           backgroundSize: "50px 50px",
         }}
       />
@@ -226,15 +245,13 @@ function StatsSection() {
         viewport={{ once: true, amount: 0.2 }}
         className="max-w-6xl mx-auto w-full relative z-10"
       >
-        <motion.div
-          variants={fadeInUp}
-          className="text-center mb-16"
-        >
+        <motion.div variants={fadeInUp} className="text-center mb-16">
           <h2 className="font-montserrat font-extrabold text-4xl md:text-5xl text-white uppercase mb-6">
             Our Foundation
           </h2>
           <p className="font-inter text-lg text-[#DFA236] max-w-2xl mx-auto">
-            The core principles driving Spark8Edge as we build the future of African talent development
+            The core principles driving Spark8Edge as we build the future of
+            African talent development
           </p>
         </motion.div>
 
@@ -248,11 +265,11 @@ function StatsSection() {
               <div className="inline-block mb-6">
                 <value.icon size={64} className="text-[#DFA236]" />
               </div>
-              
+
               <h3 className="font-montserrat font-bold text-2xl text-white uppercase tracking-wider mb-4">
                 {value.title}
               </h3>
-              
+
               <p className="font-inter text-base text-[#DFA236]/90 leading-relaxed">
                 {value.description}
               </p>
@@ -269,21 +286,24 @@ function ServicesAccordionSection() {
     {
       title: "AI & Digital Skills Training",
       subtitle: "Kenya Professional Development",
-      description: "Master AI tools, video production, content creation, social media marketing, and digital entrepreneurship at our Nairobi innovation hub.",
+      description:
+        "Master AI tools, video production, content creation, social media marketing, and digital entrepreneurship at our Nairobi innovation hub.",
       keywords: ["AI Training", "Digital Skills", "Kenya Bootcamps"],
       icon: Sparkles,
     },
     {
       title: "AI-Powered PR & Brand Services",
       subtitle: "Strategic Communications",
-      description: "Real-time media monitoring, sentiment analysis, reputation management, and data-driven brand positioning for East African businesses.",
+      description:
+        "Real-time media monitoring, sentiment analysis, reputation management, and data-driven brand positioning for East African businesses.",
       keywords: ["PR Services", "Brand Management", "AI Marketing"],
       icon: Target,
     },
     {
       title: "Vetted Creative Talent Network",
       subtitle: "Pre-Trained Professionals",
-      description: "Connect with AI specialists, content creators, video editors, social media managers, and brand strategists ready to deliver results.",
+      description:
+        "Connect with AI specialists, content creators, video editors, social media managers, and brand strategists ready to deliver results.",
       keywords: ["Hire Talent", "Creative Professionals", "Outsourcing"],
       icon: Users,
     },
@@ -298,19 +318,17 @@ function ServicesAccordionSection() {
         viewport={{ once: true, amount: 0.2 }}
         className="max-w-6xl mx-auto w-full"
       >
-        <motion.div
-          variants={fadeInUp}
-          className="text-center mb-8"
-        >
+        <motion.div variants={fadeInUp} className="text-center mb-8">
           <div className="inline-block mb-2">
             <Award size={36} className="text-[#DFA236] mx-auto" />
           </div>
-          
+
           <h2 className="font-montserrat font-extrabold text-3xl md:text-4xl text-[#040F2D] uppercase mb-3">
             Digital Transformation Services
           </h2>
           <p className="font-inter text-base text-[#6D8299] max-w-3xl mx-auto">
-            World-class AI training, strategic brand intelligence, and curated creative talent for Kenya and East Africa
+            World-class AI training, strategic brand intelligence, and curated
+            creative talent for Kenya and East Africa
           </p>
         </motion.div>
 
@@ -343,15 +361,21 @@ function ServiceCard({ service, index }: { service: any; index: number }) {
       <motion.div layout="position" className="inline-block mb-3">
         <service.icon size={40} className="text-[#DFA236]" />
       </motion.div>
-      
-      <motion.span layout="position" className="block font-inter text-xs uppercase tracking-widest mb-1 text-[#6D8299] font-semibold">
+
+      <motion.span
+        layout="position"
+        className="block font-inter text-xs uppercase tracking-widest mb-1 text-[#6D8299] font-semibold"
+      >
         {service.subtitle}
       </motion.span>
-      
-      <motion.h3 layout="position" className="font-montserrat font-bold text-lg text-[#040F2D] uppercase tracking-wider mb-2">
+
+      <motion.h3
+        layout="position"
+        className="font-montserrat font-bold text-lg text-[#040F2D] uppercase tracking-wider mb-2"
+      >
         {service.title}
       </motion.h3>
-      
+
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
@@ -364,7 +388,7 @@ function ServiceCard({ service, index }: { service: any; index: number }) {
             <p className="font-inter text-sm text-[#6D8299] leading-relaxed mb-3">
               {service.description}
             </p>
-            
+
             <div className="flex flex-wrap gap-1.5">
               {service.keywords.map((keyword: string) => (
                 <span
@@ -380,7 +404,7 @@ function ServiceCard({ service, index }: { service: any; index: number }) {
       </AnimatePresence>
 
       {!isOpen && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="mt-2 flex items-center gap-2 text-xs font-bold text-[#DFA236] uppercase"
@@ -397,17 +421,20 @@ function MarketGapSection() {
   const gaps = [
     {
       title: "Capability Acceleration",
-      problem: "Technology evolves faster than traditional education. Yesterday's skills become obsolete tomorrow.",
+      problem:
+        "Technology evolves faster than traditional education. Yesterday's skills become obsolete tomorrow.",
       solution: "Agile, industry-aligned training that evolves with markets.",
     },
     {
       title: "Digital Reputation",
-      problem: "Brand perception forms instantly online. Reactive PR strategies arrive too late to control narratives.",
+      problem:
+        "Brand perception forms instantly online. Reactive PR strategies arrive too late to control narratives.",
       solution: "Proactive AI monitoring and instant response systems.",
     },
     {
       title: "Hidden Potential",
-      problem: "Africa's creative brilliance remains invisible to international markets seeking diverse, affordable talent.",
+      problem:
+        "Africa's creative brilliance remains invisible to international markets seeking diverse, affordable talent.",
       solution: "Verified talent marketplace connecting continents.",
     },
   ];
@@ -421,15 +448,13 @@ function MarketGapSection() {
         viewport={{ once: true, amount: 0.2 }}
         className="max-w-6xl mx-auto w-full"
       >
-        <motion.div
-          variants={fadeInUp}
-          className="text-center mb-12"
-        >
+        <motion.div variants={fadeInUp} className="text-center mb-12">
           <h2 className="font-montserrat font-extrabold text-4xl md:text-5xl text-[#040F2D] uppercase mb-6">
             Solving Critical Market Challenges
           </h2>
           <p className="font-inter text-lg text-[#6D8299] max-w-2xl mx-auto">
-            Our platform addresses the disconnect between talent, training, and market demand
+            Our platform addresses the disconnect between talent, training, and
+            market demand
           </p>
         </motion.div>
 
@@ -445,7 +470,7 @@ function MarketGapSection() {
                   {gap.title}
                 </h3>
               </div>
-              
+
               <p className="font-inter text-[#6D8299] text-base mb-4 italic">
                 "{gap.problem}"
               </p>
@@ -501,17 +526,22 @@ function NewsletterSection() {
       const formData = new FormData(form);
       formData.append("cf-turnstile-response", turnstileToken);
 
-      const response = await fetch("https://formsubmit.co/subscribe@spark8edge.co.ke", {
-        method: "POST",
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
+      const response = await fetch(
+        "https://formsubmit.co/subscribe@spark8edge.co.ke",
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
+        },
+      );
 
       if (!response.ok) {
         const data = await response.json();
-        throw new Error(data.message || "Subscription failed. Please try again.");
+        throw new Error(
+          data.message || "Subscription failed. Please try again.",
+        );
       }
 
       setSubmitted(true);
@@ -524,7 +554,9 @@ function NewsletterSection() {
       }, 5000);
     } catch (err: any) {
       console.error("Form submission error:", err);
-      setError(err.message || "An unexpected error occurred. Please try again.");
+      setError(
+        err.message || "An unexpected error occurred. Please try again.",
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -533,7 +565,14 @@ function NewsletterSection() {
   return (
     <section className="min-h-screen md:snap-start flex flex-col bg-[#040F2D] py-20">
       <div className="flex-grow w-full bg-[#DFA236] flex items-center justify-center px-6 relative overflow-hidden pt-24 pb-4">
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle, #040F2D 2px, transparent 2px)", backgroundSize: "60px 60px" }} />
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, #040F2D 2px, transparent 2px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
 
         <motion.div
           variants={fadeInUp}
@@ -545,16 +584,19 @@ function NewsletterSection() {
           <h2 className="font-montserrat font-extrabold text-4xl md:text-5xl text-[#040F2D] uppercase mb-6">
             Stay Connected to Innovation
           </h2>
-          
+
           <p className="font-inter text-lg md:text-xl text-[#040F2D] mb-12 leading-relaxed">
-            Receive curated insights on emerging technologies, creative economy trends, and exclusive opportunities to grow with Africa's innovation ecosystem.
+            Receive curated insights on emerging technologies, creative economy
+            trends, and exclusive opportunities to grow with Africa's innovation
+            ecosystem.
           </p>
 
-          <form
-            onSubmit={handleSubmit}
-            className="max-w-2xl mx-auto"
-          >
-            <input type="hidden" name="_subject" value="New Newsletter Subscriber" />
+          <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
+            <input
+              type="hidden"
+              name="_subject"
+              value="New Newsletter Subscriber"
+            />
             <input type="hidden" name="_captcha" value="false" />
             <div className="flex flex-col sm:flex-row gap-4">
               <input
