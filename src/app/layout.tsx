@@ -4,18 +4,20 @@ import "./globals.css";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { ThemeProvider } from "./ThemeProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
   weight: ["600", "700", "800"],
+  display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "500"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -26,11 +28,6 @@ export const metadata: Metadata = {
   },
   description:
     "Empowering Kenya’s Next Generation through AI & Strategic Brand Intelligence.",
-  icons: {
-    icon: [{ url: "/icons.svg", type: "image/svg+xml" }],
-    shortcut: ["/icons.svg"],
-    apple: [{ url: "/icons.svg" }],
-  },
 };
 
 export default function RootLayout({
@@ -48,9 +45,9 @@ export default function RootLayout({
         >
           <ScrollProgressBar />
           {children}
-          <SpeedInsights />
-          <Analytics />
         </ThemeProvider>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
