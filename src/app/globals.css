@@ -1,6 +1,6 @@
 /* Updated: 2025-12-16T10:00:38.919Z */
 @import "tailwindcss";
-@import "tw-animate-css";
+/* @import "tw-animate-css"; */
 
 @custom-variant dark (&:is(.dark *));
 
