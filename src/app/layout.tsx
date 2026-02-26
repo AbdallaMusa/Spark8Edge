@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { ThemeProvider } from "./ThemeProvider";
@@ -11,6 +12,7 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["600", "700", "800"],
   display: "swap",
+  preload: true,
 });
 
 const inter = Inter({
@@ -18,6 +20,7 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -63,6 +66,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="overflow-y-scroll md:snap-y md:snap-mandatory">
+      <head>
+        {/* Preconnect to external resources for performance */}
+        <link rel="preconnect" href="https://challenges.cloudflare.com" />
+        <link rel="preconnect" href="https://formsubmit.co" />
+        <link rel="dns-prefetch" href="https://challenges.cloudflare.com" />
+        <link rel="dns-prefetch" href="https://formsubmit.co" />
+        {/* Cloudflare Turnstile script - lazy loaded for non-critical security widget */}
+        <Script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          strategy="lazyOnload"
+          async={true}
+        />
+        {/* Vercel Analytics and Speed Insights are already async */}
+      </head>
       <body className={`${montserrat.variable} ${inter.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
