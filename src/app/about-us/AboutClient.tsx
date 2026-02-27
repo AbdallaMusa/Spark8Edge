@@ -12,18 +12,20 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
+import { Footer } from "@/components/Footer";
 
 export default function AboutClient() {
   return (
-    <>
-      <main>
-        <CinematicHeroSection />
-        <ScrollytellingSection />
-        <ArchitectsSection />
-        <PartnersSection />
-        <DualCTASection />
-      </main>
-    </>
+    <main className="flex-1">
+      <CinematicHeroSection />
+      <ScrollytellingSection />
+      <ArchitectsSection />
+      <PartnersSection />
+      <DualCTASection />
+      <div className="md:snap-start w-full border-t border-white/5 bg-[#040F2D] relative">
+        <Footer />
+      </div>
+    </main>
   );
 }
 
@@ -36,9 +38,7 @@ const HERO_FEATURES = [
 function CinematicHeroSection() {
   return (
     <section className="min-h-screen md:snap-start w-full flex items-center justify-center relative overflow-hidden px-6 py-16 md:py-24">
-      <motion.div
-        className="absolute inset-0"
-      >
+      <motion.div className="absolute inset-0">
         <Image
           src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?q=80&w=2070"
           alt="Team working together on laptops in a bright, modern workspace"
@@ -49,8 +49,6 @@ function CinematicHeroSection() {
           loading="eager"
         />
       </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-br from-[#040F2D] via-[#040F2D]/95 to-[#040F2D]/90" />
-      <div className="absolute inset-0 bg-[#040F2D] opacity-50" />
 
       <motion.div
         variants={staggerContainer}
@@ -69,14 +67,14 @@ function CinematicHeroSection() {
 
         <motion.h1
           variants={fadeInUp}
-          className="font-montserrat font-extrabold text-4xl md:text-6xl lg:text-7xl text-white mb-6 md:mb-8 leading-tight"
+          className="font-montserrat font-extrabold text-4xl md:text-6xl lg:text-7xl text-white mb-6 md:mb-8 leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]"
         >
           Connecting Youth Talent
           <br />
           <span className="text-[#DFA236]">With Corporate Innovation</span>
         </motion.h1>
 
-        <motion.div variants={fadeInUp} transition={{ delay: 0.2 }}>
+        <motion.div variants={fadeInUp} transition={{ delay: 0.2 }} className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]">
           <p className="font-inter text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8 md:mb-12">
             Spark8Edge bridges the gap between ambitious youth seeking tech
             careers and organizations needing fresh talent. We transform

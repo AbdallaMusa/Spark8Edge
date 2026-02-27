@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
 import AboutClient from "./AboutClient";
 
 export const metadata: Metadata = {
@@ -16,12 +15,9 @@ export const metadata: Metadata = {
 
 export default function AboutUs() {
   return (
-    <>
+    <div className="bg-[#040F2D] min-h-screen flex flex-col">
       <Navbar />
       <AboutClient />
-      <div className="w-full border-t border-white/5 bg-[#040F2D] relative z-20">
-        <Footer />
-      </div>
-    </>
+    </div>
   );
 }

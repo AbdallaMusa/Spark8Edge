@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
 import OrganizationClient from "./OrganizationClient";
 
 export const metadata: Metadata = {
@@ -16,10 +15,9 @@ export const metadata: Metadata = {
 
 export default function Organization() {
   return (
-    <div className="bg-[#040F2D]">
+    <div className="bg-[#040F2D] min-h-screen flex flex-col">
       <Navbar />
       <OrganizationClient />
-      <Footer />
     </div>
   );
 }

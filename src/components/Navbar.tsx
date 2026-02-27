@@ -17,6 +17,7 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "framer-motion";
+import { IconWrapper } from "./HydrationSafeIcon";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -142,8 +143,17 @@ export function Navbar() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-[#040F2D] p-2 hover:bg-[#040F2D]/5 rounded-full transition-colors"
+              suppressHydrationWarning
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? (
+                <IconWrapper>
+                  <X size={24} />
+                </IconWrapper>
+              ) : (
+                <IconWrapper>
+                  <Menu size={24} />
+                </IconWrapper>
+              )}
             </button>
           </div>
         </div>
@@ -188,7 +198,9 @@ export function Navbar() {
                     className="text-white p-2 hover:bg-white/10 rounded-full transition-colors"
                     aria-label="Close menu"
                   >
-                    <X size={24} />
+                    <IconWrapper>
+                      <X size={24} />
+                    </IconWrapper>
                   </button>
                 </div>
 

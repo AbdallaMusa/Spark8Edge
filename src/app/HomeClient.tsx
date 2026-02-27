@@ -8,6 +8,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Sparkles, Target, Zap, Users, Award } from "lucide-react";
 import { TurnstileWidget } from "@/components/TurnstileWidget";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
+import { Footer } from "@/components/Footer";
+import { createNormalizedStyle } from "@/lib/style-utils";
 
 // Lazy load non-critical sections (below the fold)
 const NexusSection = dynamic(() => import("./home-sections/NexusSection").then(mod => mod.NexusSection), {
@@ -37,7 +39,7 @@ const NewsletterSection = dynamic(() => import("./home-sections/NewsletterSectio
 
 export default function HomeClient() {
   return (
-    <div className="bg-[#040F2D]">
+    <div className="bg-[#040F2D] flex-1">
       <main>
         <SplitHeroSection />
         <NexusSection />
@@ -45,6 +47,9 @@ export default function HomeClient() {
         <ServicesAccordionSection />
         <MarketGapSection />
         <NewsletterSection />
+        <div className="md:snap-start w-full border-t border-white/5 bg-[#040F2D] relative">
+          <Footer />
+        </div>
       </main>
     </div>
   );
@@ -86,7 +91,7 @@ function SplitHeroSection() {
         btnText="#040F2D"
         btnHoverBg="white"
         btnHoverText="#040F2D"
-        priority={false}
+        priority={true}
         headingLevel="h2"
       />
     </section>
@@ -131,9 +136,20 @@ function SplitHeroPanel({
   headingLevel = "h1",
 }: SplitHeroPanelProps) {
   const HeadingTag = headingLevel;
+  const [isButtonHovered, setIsButtonHovered] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Only apply hover effects after component is mounted to avoid hydration mismatches
+  const effectiveOpacity = isMounted ? (isButtonHovered ? overlayOpacity + 0.2 : 0) : 0;
+  const effectiveBgColor = isMounted ? (isButtonHovered ? btnHoverBg : btnBg) : btnBg;
+  const effectiveTextColor = isMounted ? (isButtonHovered ? btnHoverText : btnText) : btnText;
 
   return (
-    <div className="relative flex-1 h-auto py-20 md:py-0 md:min-h-full flex items-center justify-center overflow-hidden group">
+    <div className="relative flex-1 h-auto py-20 md:py-0 md:min-h-full flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src={image}
@@ -147,33 +163,38 @@ function SplitHeroPanel({
           />
         </div>
       <div
-        className="absolute inset-0 transition-all duration-500 ease-out"
-        style={{
+        className="absolute inset-0 transition-opacity duration-500 ease-out"
+        style={createNormalizedStyle({
           backgroundColor: overlayColor,
-          opacity: overlayOpacity + 0.2, // A bit more opaque to ensure text is readable
-        }}
+          opacity: effectiveOpacity,
+        })}
       />
 
       <div className="relative z-10 text-center px-6 py-12 max-w-xl">
         <HeadingTag
-          className="font-montserrat font-extrabold text-3xl sm:text-5xl md:text-6xl uppercase mb-4 leading-tight"
-          style={{ color: textColor }}
+          className="font-montserrat font-extrabold text-3xl sm:text-5xl md:text-6xl uppercase mb-4 leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]"
+          style={createNormalizedStyle({ color: textColor })}
         >
           {title}
         </HeadingTag>
 
         <div>
           <p
-            className="font-inter text-lg mb-8 font-semibold"
-            style={{ color: descColor || textColor }}
+            className="font-inter text-lg mb-8 font-semibold drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]"
+            style={createNormalizedStyle({ color: descColor || textColor })}
           >
             {description}
           </p>
 
           <Link
             href={link}
-            className={`inline-flex items-center gap-3 px-8 py-4 font-montserrat font-semibold text-sm uppercase tracking-wider rounded transition-all duration-300 active:scale-95`}
-            style={{ backgroundColor: btnBg, color: btnText }}
+            className={`inline-flex items-center gap-3 px-8 py-4 font-montserrat font-semibold text-sm uppercase tracking-wider rounded transition-all duration-300 active:scale-95 relative z-20`}
+            style={createNormalizedStyle({ 
+              backgroundColor: effectiveBgColor, 
+              color: effectiveTextColor 
+            })}
+            onMouseEnter={() => setIsButtonHovered(true)}
+            onMouseLeave={() => setIsButtonHovered(false)}
           >
             {linkText} <ArrowRight size={20} />
           </Link>
@@ -260,5 +281,3 @@ function ServiceCard({ service, index }: { service: any; index: number }) {
     </motion.div>
   );
 }
-
-

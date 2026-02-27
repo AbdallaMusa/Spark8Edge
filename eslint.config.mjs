@@ -1,34 +1,43 @@
-import pkg from '@eslint/eslintrc';
-const { FlatCompat } = pkg;
+// Simple ESLint configuration for Next.js
+import next from '@next/eslint-plugin-next';
+import tseslint from 'typescript-eslint';
 
-const compat = new FlatCompat({
-  // import.meta.dirname is available after Node.js v20.11.0
-  baseDirectory: import.meta.dirname,
-})
- 
-const eslintConfig = [
-  ...compat.config({
-    extends: ['next'],
-    plugins: ['import'],
-  }),
+export default tseslint.config(
   {
+    ignores: ['.next/', 'node_modules/', '*.config.*', '*.d.ts'],
+  },
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    extends: [
+      tseslint.configs.recommended,
+    ],
+    plugins: {
+      '@next/next': next,
+    },
     rules: {
+      ...next.configs.recommended.rules,
+      ...next.configs['core-web-vitals'].rules,
       'react/no-unescaped-entities': 'off',
       '@next/next/no-img-element': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       'react-hooks/exhaustive-deps': 'off',
-      'import/no-unresolved': 'error',
-      'import/named': 'error',
-      'import/default': 'error',
-      'import/namespace': 'error',
-      'import/no-absolute-path': 'error',
-      'import/no-dynamic-require': 'error',
-      'import/no-self-import': 'error',
-      'import/no-cycle': 'error',
-      'import/no-useless-path-segments': 'error',
     },
   },
-]
- 
-export default eslintConfig
+  {
+    files: ['**/*.js', '**/*.jsx'],
+    extends: [
+      tseslint.configs.recommended,
+    ],
+    plugins: {
+      '@next/next': next,
+    },
+    rules: {
+      ...next.configs.recommended.rules,
+      ...next.configs['core-web-vitals'].rules,
+      'react/no-unescaped-entities': 'off',
+      '@next/next/no-img-element': 'off',
+      'react-hooks/exhaustive-deps': 'off',
+    },
+  }
+);

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
 import YouthHubClient from "./YouthHubClient";
 
 export const metadata: Metadata = {
@@ -16,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function YouthHub() {
   return (
-    <div className="bg-[#040F2D]">
+    <div className="bg-[#040F2D] min-h-screen flex flex-col">
       <Navbar />
       <YouthHubClient />
     </div>

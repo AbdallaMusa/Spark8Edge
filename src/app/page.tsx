@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
 import HomeClient from "./HomeClient";
 
 export const metadata: Metadata = {
@@ -16,12 +15,9 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="bg-[#040F2D]">
+    <div className="bg-[#040F2D] min-h-screen flex flex-col">
       <Navbar />
       <HomeClient />
-      <div className="flex-shrink-0">
-        <Footer />
-      </div>
     </div>
   );
 }

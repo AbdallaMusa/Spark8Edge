@@ -79,7 +79,7 @@ export function NewsletterSection() {
 
   return (
     <section className="min-h-screen md:snap-start flex flex-col bg-[#040F2D] py-20">
-      <div className="flex-grow w-full bg-[#DFA236] flex items-center justify-center px-6 relative overflow-hidden pt-24 pb-4">
+      <div className="flex-grow w-full bg-[#DFA236] flex items-center justify-center px-6 relative overflow-hidden pt-24 pb-32">
         <div
           className="absolute inset-0 opacity-10"
           style={{
