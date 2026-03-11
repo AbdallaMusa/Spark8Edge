@@ -7,8 +7,12 @@ import { Twitter, Linkedin, Instagram, ArrowRight } from "lucide-react";
 import { IconWrapper } from "./HydrationSafeIcon";
 
 const socialLinks = [
-  { name: "Twitter", href: "#", icon: Twitter },
-  { name: "LinkedIn", href: "#", icon: Linkedin },
+  { name: "X", href: "#", icon: Twitter },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/company/spark8edge/about/",
+    icon: Linkedin,
+  },
   { name: "Instagram", href: "#", icon: Instagram },
 ];
 
@@ -121,7 +125,10 @@ export function Footer() {
               href={cta.href}
               className="inline-flex items-center gap-2 px-4 py-2 bg-[#DFA236] text-[#040F2D] font-montserrat font-semibold text-xs uppercase tracking-wider rounded hover:bg-white transition-all duration-300 active:scale-95"
             >
-              {cta.buttonText} <IconWrapper><ArrowRight size={16} /></IconWrapper>
+              {cta.buttonText}{" "}
+              <IconWrapper>
+                <ArrowRight size={16} />
+              </IconWrapper>
             </Link>
           </div>
         </div>
