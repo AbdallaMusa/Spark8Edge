@@ -606,15 +606,16 @@ function HeroSection() {
   return (
     <section className="min-h-screen md:snap-start w-full flex items-center justify-center relative overflow-hidden px-6 py-16 md:py-24">
       <motion.div className="absolute inset-0">
-        <Image
-          src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070"
-          alt="Business team collaborating in a modern office"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-          loading="eager"
-        />
+      <Image
+        src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070"
+        alt="Business team collaborating in a modern office"
+        fill
+        className="object-cover object-center brightness-[0.85]"
+        priority
+        sizes="100vw"
+        loading="eager"
+        quality={100}
+      />
       </motion.div>
       <div
         className="absolute inset-0 bg-[#040F2D] transition-opacity duration-500 ease-out"

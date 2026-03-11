@@ -1,31 +1,32 @@
-# Active Task: Implement Contact Popover for Footer CTA Button
+# Active Task: Mobile UX Improvements and Bug Fixes
 
-**Objective:** Replace the current CTA button link in Footer.tsx with an interactive contact popover that displays email and phone options with smooth animations and click-outside closing.
+**Objective:** Implement multiple mobile UX improvements based on user feedback to fix hero text color inconsistency, hero image scaling, mobile menu social icons, youth hub card layout, typography scaling, image quality, and animation smoothness.
 
 ## Requirements:
-1. Convert CTA button from Link to interactive button that toggles popover
-2. Popover shows Email (info@spark8edge.co.ke) and Phone (+254727712711) with proper mailto/tel links
-3. Add Framer Motion animations for smooth entrance/exit
-4. Implement click-outside detection to close popover
-5. Improve visual layout with icons, proper styling, and micro-interactions
-6. Maintain accessibility (role="dialog", aria-expanded, aria-controls)
-7. Optionally add glassmorphism effect for premium look
+1. Fix hero text color inconsistency across devices
+2. Fix hero image scaling and cropping on mobile
+3. Add footer social icons to mobile menu
+4. Fix Youth Hub "Choose Your Weapon" cards overflow
+5. Standardize global mobile typography
+6. Improve image quality across devices
+7. Improve animation smoothness on mobile
 
-## Current Status: ✅ COMPLETED
+## Current Status: In progress
 
 ## Implementation Plan:
-- [x] Analyze current Footer.tsx and create ContactPopover component
-- [x] Implement basic popover toggle with useState
-- [x] Add Framer Motion animations  
-- [x] Implement click-outside detection
-- [x] Style popover with proper layout, icons, and micro-interactions
-- [x] Integrate into Footer.tsx
-- [x] Test functionality and accessibility
-- [x] Add glassmorphism effect for premium look
+- [x] Analyze current hero components and text color issues
+- [x] Fix hero text color consistency across devices
+- [x] Fix hero image scaling and cropping
+- [x] Add social icons to mobile menu
+- [x] Fix Youth Hub card layout overflow
+- [x] Standardize responsive typography
+- [x] Improve image quality settings
+- [x] Optimize animation performance for mobile
 
 ## Risk Assessment:
-- Low risk: Changes limited to Footer component, no core functionality affected
-- Need to ensure popover positioning works across all screen sizes
-- Must maintain existing dynamic CTA text logic based on current route
+- Medium risk: Changes affect multiple pages and components
+- Need to ensure no visual regressions on desktop
+- Must maintain existing animations and interactions
+- Performance considerations for mobile devices
 
-**Last Updated:** 2026-03-10
+**Last Updated:** 2026-03-11

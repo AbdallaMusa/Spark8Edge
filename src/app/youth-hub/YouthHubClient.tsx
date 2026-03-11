@@ -54,10 +54,11 @@ function HeroSection() {
         src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070"
         alt="Students collaborating in a modern learning environment"
         fill
-        className="object-cover"
+        className="object-cover object-center brightness-[0.85]"
         priority
         sizes="100vw"
         loading="eager"
+        quality={100}
       />
       <div
         className="absolute inset-0 bg-[#040F2D] transition-opacity duration-500 ease-out"
@@ -195,20 +196,22 @@ function CurriculumSection() {
         </motion.header>
 
         <div
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+          className="grid grid-cols-2 gap-4 md:gap-6"
           role="list"
         >
           {TECHNOLOGIES_DATA.map((tech) => (
             <motion.article
               key={tech.name}
               variants={fadeInUp}
-              className="bg-white p-5 rounded-xl shadow-sm border border-gray-200 hover:border-[#DFA236] hover:shadow-md transition-all group"
+              className="bg-white p-4 rounded-xl shadow-sm border border-gray-200 hover:border-[#DFA236] hover:shadow-md transition-all group min-h-[120px] flex flex-col justify-center break-words"
               role="listitem"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
             >
-              <h3 className="font-montserrat font-bold text-[#040F2D] group-hover:text-[#DFA236] transition-colors text-sm md:text-base">
+              <h3 className="font-montserrat font-bold text-[#040F2D] group-hover:text-[#DFA236] transition-colors text-sm md:text-lg leading-tight mb-1">
                 {tech.name}
               </h3>
-              <p className="text-xs text-[#6D8299] mt-1 font-inter">
+              <p className="text-xs md:text-sm text-gray-500 mt-1 font-inter">
                 {tech.category}
               </p>
             </motion.article>

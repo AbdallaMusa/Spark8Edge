@@ -43,10 +43,11 @@ function CinematicHeroSection() {
           src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?q=80&w=2070"
           alt="Team working together on laptops in a bright, modern workspace"
           fill
-          className="object-cover"
+          className="object-cover object-center brightness-[0.85]"
           priority
           sizes="100vw"
           loading="eager"
+          quality={100}
         />
       </motion.div>
 

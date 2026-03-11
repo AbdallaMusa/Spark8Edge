@@ -155,13 +155,16 @@ function SplitHeroPanel({
             src={image}
             alt={title}
             fill
-            className="object-cover"
+            className="object-cover object-center brightness-[0.85]"
             priority={priority}
             sizes="(max-width: 768px) 100vw, 50vw"
             loading={priority ? "eager" : "lazy"}
             fetchPriority={priority ? "high" : "auto"}
+            quality={100}
           />
         </div>
+      {/* Permanent overlay for consistent text readability */}
+      <div className="absolute inset-0 bg-black/40" />
       <div
         className="absolute inset-0 transition-opacity duration-500 ease-out"
         style={createNormalizedStyle({
