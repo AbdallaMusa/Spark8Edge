@@ -5,13 +5,14 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Twitter, Linkedin, Instagram, ArrowRight, Facebook } from "lucide-react";
 import { IconWrapper } from "./HydrationSafeIcon";
+import { FaTiktok } from "react-icons/fa";
 
 const socialLinks = [
   {name: "LinkedIn",href: "https://www.linkedin.com/company/spark8edge/about/",icon: Linkedin,},
   { name: "X", href: "#", icon: Twitter },
   { name: "Facebook", href: "#", icon: Facebook },
   { name: "Instagram", href: "#", icon: Instagram },
-  // { name: "TikTok", href: "#", icon: FaTiktok },  *->find a way to incooperate tiktok without hydration issues
+  { name: "TikTok", href: "#", icon: FaTiktok }, 
 
 ];
 
