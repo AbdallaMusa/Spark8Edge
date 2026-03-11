@@ -4,8 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Twitter, Linkedin, Instagram, ArrowRight, Facebook } from "lucide-react";
-import { IconWrapper } from "./HydrationSafeIcon";
 import { FaTiktok } from "react-icons/fa";
+import { IconWrapper } from "./HydrationSafeIcon";
+
 
 const socialLinks = [
   {name: "LinkedIn",href: "https://www.linkedin.com/company/spark8edge/about/",icon: Linkedin,},
