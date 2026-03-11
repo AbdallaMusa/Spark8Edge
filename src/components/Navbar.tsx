@@ -3,20 +3,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  Menu,
-  X,
-  Twitter,
-  Linkedin,
-  Instagram,
-  ArrowRight,
-} from "lucide-react";
-import {
-  motion,
-  AnimatePresence,
-  useScroll,
-  useMotionValueEvent,
-} from "framer-motion";
+import {Menu,X,Twitter,Linkedin,Instagram,ArrowRight, Facebook,} from "lucide-react";
+import { FaTiktok } from "react-icons/fa";
+import {motion,AnimatePresence,useScroll,useMotionValueEvent,} from "framer-motion";
 import { IconWrapper } from "./HydrationSafeIcon";
 
 export function Navbar() {
@@ -63,11 +52,14 @@ export function Navbar() {
     { name: "About Us", href: "/about-us" },
   ];
 
-  const socialLinks = [
-    { name: "Twitter", href: "#", icon: Twitter },
-    { name: "LinkedIn", href: "#", icon: Linkedin },
-    { name: "Instagram", href: "#", icon: Instagram },
-  ];
+const socialLinks = [
+  {name: "LinkedIn",href: "https://www.linkedin.com/company/spark8edge/about/",icon: Linkedin,},
+  { name: "X", href: "#", icon: Twitter },
+  { name: "Facebook", href: "#", icon: Facebook },
+  { name: "Instagram", href: "#", icon: Instagram },
+  { name: "TikTok", href: "#", icon: FaTiktok }, 
+
+];
 
   return (
     <>
