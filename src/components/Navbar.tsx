@@ -15,10 +15,17 @@ export function Navbar() {
   const [hidden, setHidden] = useState(false);
   const { scrollY } = useScroll();
 
+  /**
+   * Handles logo click with smooth scroll-to-top functionality
+   * When already on home page: smooth scrolls to top
+   * When on other pages: navigates to home page
+   * Always closes mobile menu if open
+   * Version: 0.2.1 - Added March 2026
+   */
   const handleLogoClick = (e: React.MouseEvent) => {
     e.preventDefault();
     if (pathname === "/") {
-      // Already on home page, scroll to top
+      // Already on home page, scroll to top smoothly
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       // Navigate to home page
@@ -28,10 +35,17 @@ export function Navbar() {
     setIsOpen(false); // Close mobile menu if open
   };
 
+  /**
+   * Handles home button click with same smooth scroll-to-top functionality as logo
+   * When already on home page: smooth scrolls to top
+   * When on other pages: navigates to home page
+   * Always closes mobile menu if open
+   * Version: 0.2.1 - Added March 2026 (matches logo behavior)
+   */
   const handleHomeClick = (e: React.MouseEvent) => {
     e.preventDefault();
     if (pathname === "/") {
-      // Already on home page, scroll to top
+      // Already on home page, smooth scroll to top
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       // Navigate to home page
@@ -78,11 +92,17 @@ export function Navbar() {
     { name: "About Us", href: "/about-us" },
   ];
 
+/**
+ * Professional social media links ordering for optimal brand presentation
+ * Ordered by professional relevance and user engagement patterns
+ * Matches Footer.tsx ordering for consistency across the site
+ * Version: 0.2.1 - Updated March 2026
+ */
 const socialLinks = [
   {name: "LinkedIn",href: "https://www.linkedin.com/company/spark8edge/about/",icon: Linkedin,},
+  { name: "Instagram", href: "#", icon: Instagram },
   { name: "X", href: "#", icon: Twitter },
   { name: "Facebook", href: "#", icon: Facebook },
-  { name: "Instagram", href: "#", icon: Instagram },
   { name: "TikTok", href: "#", icon: FaTiktok }, 
 
 ];

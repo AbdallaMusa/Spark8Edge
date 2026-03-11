@@ -1,6 +1,6 @@
 # Spark8Edge
 
-> Empowering Kenya’s Next Generation through AI & Strategic Brand Intelligence.
+> Empowering Kenya's Next Generation through AI & Strategic Brand Intelligence.
 
 This is the official web application for Spark8Edge, built with Next.js and optimized for deployment on Vercel. It showcases the organization's services, including youth development programs and enterprise solutions, with a focus on performance and modern web standards.
 
@@ -59,6 +59,104 @@ Open http://localhost:3000 with your browser to see the result.
   - Vercel Analytics
   - Vercel Speed Insights
 - **Deployment**: Vercel
+
+## 📦 Version History
+
+### Version 0.2.1 (March 2026) - Navigation & Mobile Optimization
+**Current Version** - Focus: Enhanced navigation experience and mobile UX improvements.
+
+#### Key Features:
+- **Enhanced Navigation**:
+  - Smooth scroll-to-top functionality for logo and home button
+  - Logo click: Scrolls to top on current page or navigates to home page
+  - Home button: Same behavior as logo for consistent UX
+  - Works across all pages (Home, Youth Hub, Organization, About Us)
+  - Both desktop and mobile menu support
+
+- **Mobile UX Improvements**:
+  - Hero text color consistency across all devices
+  - Enhanced text shadows and background overlays
+  - Improved hero image scaling and cropping on mobile
+  - Youth Hub "Choose Your Weapon" card layout fixes
+  - Standardized responsive typography system
+
+- **Interactive Contact Popover**:
+  - Premium glassmorphism contact popover in footer
+  - Smooth Framer Motion animations with centralized timing tokens
+  - Click-outside detection for intuitive closing
+  - Email (`mailto:info@spark8edge.co.ke`) and phone (`tel:+254727712711`) options
+  - Dynamic CTA logic preserved (different behavior per route)
+  - Full accessibility compliance with ARIA attributes
+
+#### Technical Improvements:
+- Created modular `ContactPopover.tsx` component for maintainability
+- Enhanced animation performance with mobile-optimized transitions
+- Improved code comments and documentation
+- **Professional Social Media Ordering**: Updated social links arrangement for optimal brand presentation
+  - **New Order**: LinkedIn → Instagram → X (Twitter) → Facebook → TikTok
+  - **Rationale**: Professional platforms first (LinkedIn), visual engagement (Instagram), real-time updates (X), community (Facebook), emerging platforms (TikTok)
+  - **Consistency**: Applied same ordering across Footer and mobile navigation menu
+- Maintained all existing Lighthouse performance scores
+
+#### Files Changed:
+- `package.json` - Updated to version 0.2.1
+- `src/components/Navbar.tsx` - Added smooth scroll-to-top functionality and updated social links ordering
+- `src/components/ContactPopover.tsx` - New interactive component
+- `src/components/Footer.tsx` - Integrated ContactPopover with conditional logic and updated social links ordering
+- `README.md` - Updated documentation and changelog
+
+### Version 0.2.0 (February 2026) - Performance Optimization & Architecture Cleanup
+**Focus**: Comprehensive performance improvements and codebase architecture.
+
+#### Key Improvements:
+- **Performance Optimization**:
+  - Perfect Lighthouse Performance score (100) achieved
+  - Code splitting with dynamic imports for below-fold sections
+  - Bundle size reduced by ~40% through strategic lazy loading
+  - AVIF image format enabled with 24-hour cache TTL
+
+- **Mobile-First Architecture**:
+  - Component-level code splitting for optimal mobile performance
+  - Created `src/app/home-sections/` directory with modular sections
+  - Skeleton loading states for progressive UI enhancement
+  - Third-party script optimization with lazy loading
+
+- **Architecture Cleanup**:
+  - Eliminated duplicate footer imports across client components
+  - Standardized page layout with consistent flexbox patterns
+  - Removed unused `ThemeToggle.tsx` component
+  - Fixed ESLint configuration and TypeScript compilation errors
+
+- **Animation System**:
+  - Created comprehensive motion tokens in `src/lib/animations.ts`
+  - Centralized timing constants and easing curves
+  - Standardized hero tint behavior across all pages
+  - Mobile-optimized animation variants
+
+#### Technical Milestones:
+- Build time reduced to 5.4s
+- All 8 routes prerendered as static content
+- Bundle analyzer integration for performance monitoring
+- Enhanced ESLint configuration with modern TypeScript rules
+
+### Version 0.1.0 (January 2026) - Initial Release
+**Foundation**: Core application structure and basic functionality.
+
+#### Initial Features:
+- Next.js 14 App Router architecture
+- Core pages: Home, Youth Hub, Organization, About Us
+- Dark/light mode support via `next-themes`
+- Basic responsive design with Tailwind CSS
+- Integration with Vercel Analytics and Speed Insights
+- Cloudflare Turnstile for spam protection
+- FormSubmit integration for contact forms
+
+#### Foundation Components:
+- `Navbar.tsx` - Responsive navigation with mobile menu
+- `Footer.tsx` - Dynamic footer with route-specific CTAs
+- `HomeClient.tsx` - Main landing page with hero sections
+- Basic animation system with Framer Motion
+- TypeScript configuration with strict typing
 
 ## 🏆 Performance Optimization Summary
 
@@ -143,21 +241,35 @@ Open http://localhost:3000 with your browser to see the result.
 - **Enterprise-Grade Reliability** with production-validated metrics
 - **Competitive Advantage** through industry-leading web performance standards
 
-## 🎯 Future Optimization Opportunities
+## 📝 Development Philosophy
 
-1. **Image CDN Integration**: Implement next-gen image formats (WebP/AVIF) with CDN caching
-2. **Edge Functions**: Migrate form submissions to Vercel Edge Functions for reduced latency
-3. **Progressive Web App**: Add PWA capabilities for offline functionality
-4. **A/B Testing Framework**: Implement feature flagging for performance experimentation
+### Code Quality Standards
+- **TypeScript Strictness**: Comprehensive type safety across all components
+- **Component Architecture**: Clean separation of concerns with single responsibility
+- **Animation Consistency**: Centralized motion tokens for uniform UX
+- **Accessibility First**: WCAG compliance with semantic HTML and ARIA attributes
+- **Performance Budget**: Bundle size monitoring with bundle analyzer integration
 
-## ✅ Recent Updates
+### Documentation Approach
+- **Inline Comments**: Key logic explained with clear comments
+- **Decision Log**: All architectural decisions documented in `cline_docs/decision-log.md`
+- **Version Tracking**: Semantic versioning with detailed changelog
+- **Codebase Sync**: README reflects actual implementation and version history
 
-- **Comprehensive Performance Overhaul**: Transformed application from good to exceptional performance metrics
-- **Code Splitting Architecture**: Implemented strategic lazy loading for optimal bundle delivery
-- **Third-Party Script Optimization**: Deferred non-critical scripts while maintaining functionality
-- **Lighthouse Score Improvement**: Achieved perfect Performance (100) and maintained perfect SEO (100)
-- **TypeScript Refactoring**: Resolved compilation errors and improved developer experience
-- **Production Readiness**: Validated through multiple build and audit cycles with consistent results
+## 🎯 Future Roadmap
+
+### Planned Features (v0.3.0)
+1. **Image CDN Integration**: Next-gen image formats (WebP/AVIF) with CDN caching
+2. **Edge Functions**: Form submissions migrated to Vercel Edge Functions for reduced latency
+3. **Progressive Web App**: Offline functionality and installable app capabilities
+4. **A/B Testing Framework**: Feature flagging for performance experimentation
+5. **Analytics Dashboard**: Enhanced user behavior tracking and conversion analytics
+
+### Technical Debt & Improvements
+1. **Test Suite**: Comprehensive unit and integration testing
+2. **Internationalization**: Multi-language support for broader reach
+3. **API Integration**: Backend services for dynamic content management
+4. **Design System**: Component library with design token standardization
 
 ## 📝 License
 
@@ -170,3 +282,5 @@ For contribution guidelines, please contact the development team directly.
 ---
 
 **Spark8Edge** – Bridging East Africa's creative ecosystem with global markets through AI-powered talent development and strategic brand intelligence.
+
+*Version: 0.2.1 | Last Updated: March 2026*

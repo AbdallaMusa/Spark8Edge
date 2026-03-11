@@ -9,11 +9,16 @@ import { IconWrapper } from "./HydrationSafeIcon";
 import { ContactPopover } from "./ContactPopover";
 
 
+/**
+ * Professional social media links ordering for optimal brand presentation
+ * Ordered by professional relevance and user engagement patterns
+ * Version: 0.2.1 - Updated March 2026
+ */
 const socialLinks = [
   {name: "LinkedIn",href: "https://www.linkedin.com/company/spark8edge/about/",icon: Linkedin,},
+  { name: "Instagram", href: "#", icon: Instagram },
   { name: "X", href: "#", icon: Twitter },
   { name: "Facebook", href: "#", icon: Facebook },
-  { name: "Instagram", href: "#", icon: Instagram },
   { name: "TikTok", href: "#", icon: FaTiktok }, 
 
 ];

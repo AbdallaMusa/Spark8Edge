@@ -6,6 +6,16 @@ import { Mail, Phone } from "lucide-react";
 import { TRANSITIONS, buttonHoverAnimation } from "@/lib/animations";
 import { IconWrapper } from "./HydrationSafeIcon";
 
+/**
+ * Interactive contact popover component with glassmorphism effect
+ * Replaces simple Link in Footer CTA with animated contact options
+ * Features: smooth animations, click-outside detection, accessibility compliance
+ * Version: 0.2.1 - Added March 2026
+ * 
+ * @interface ContactPopoverProps
+ * @property {string} buttonText - The CTA button text
+ * @property {string} [className] - Optional className for the button
+ */
 interface ContactPopoverProps {
   /** The CTA button text */
   buttonText: string;
@@ -13,6 +23,16 @@ interface ContactPopoverProps {
   className?: string;
 }
 
+/**
+ * ContactPopover Component
+ * Interactive popover with email and phone contact options
+ * Uses Framer Motion for smooth animations and centralized timing tokens
+ * Implements click-outside detection for intuitive closing
+ * Features glassmorphism effect with gradient borders and backdrop blur
+ * 
+ * @param {ContactPopoverProps} props - Component properties
+ * @returns {JSX.Element} Contact popover component
+ */
 export function ContactPopover({ buttonText, className = "" }: ContactPopoverProps) {
   const [isOpen, setIsOpen] = useState(false);
   const popoverRef = useRef<HTMLDivElement>(null);
