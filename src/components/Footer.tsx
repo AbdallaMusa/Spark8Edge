@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Twitter, Linkedin, Instagram, ArrowRight, Facebook } from "lucide-react";
 import { FaTiktok } from "react-icons/fa";
 import { IconWrapper } from "./HydrationSafeIcon";
+import { ContactPopover } from "./ContactPopover";
 
 
 const socialLinks = [
@@ -122,15 +123,19 @@ export function Footer() {
             <p className="font-inter text-sm text-gray-300 mb-4 leading-relaxed">
               {cta.text}
             </p>
-            <Link
-              href={cta.href}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-[#DFA236] text-[#040F2D] font-montserrat font-semibold text-xs uppercase tracking-wider rounded hover:bg-white transition-all duration-300 active:scale-95"
-            >
-              {cta.buttonText}{" "}
-              <IconWrapper>
-                <ArrowRight size={16} />
-              </IconWrapper>
-            </Link>
+            {pathname === "/youth-hub" || pathname === "/organization" ? (
+              <Link
+                href={cta.href}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-[#DFA236] text-[#040F2D] font-montserrat font-semibold text-xs uppercase tracking-wider rounded hover:bg-white transition-all duration-300 active:scale-95"
+              >
+                {cta.buttonText}{" "}
+                <IconWrapper>
+                  <ArrowRight size={16} />
+                </IconWrapper>
+              </Link>
+            ) : (
+              <ContactPopover buttonText={cta.buttonText} />
+            )}
           </div>
         </div>
 
