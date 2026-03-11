@@ -3,17 +3,16 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { Twitter, Linkedin, Instagram, ArrowRight } from "lucide-react";
+import { Twitter, Linkedin, Instagram, ArrowRight, Facebook } from "lucide-react";
 import { IconWrapper } from "./HydrationSafeIcon";
 
 const socialLinks = [
   { name: "X", href: "#", icon: Twitter },
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/company/spark8edge/about/",
-    icon: Linkedin,
-  },
+  {name: "LinkedIn",href: "https://www.linkedin.com/company/spark8edge/about/",icon: Linkedin,},
   { name: "Instagram", href: "#", icon: Instagram },
+  { name: "Facebook", href: "#", icon: Facebook },
+  { name: "TikTok", href: "#", icon: FaTiktok },
+
 ];
 
 const navLinks = [
