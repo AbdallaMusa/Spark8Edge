@@ -7,11 +7,11 @@ import { Twitter, Linkedin, Instagram, ArrowRight, Facebook } from "lucide-react
 import { IconWrapper } from "./HydrationSafeIcon";
 
 const socialLinks = [
-  { name: "X", href: "#", icon: Twitter },
   {name: "LinkedIn",href: "https://www.linkedin.com/company/spark8edge/about/",icon: Linkedin,},
-  { name: "Instagram", href: "#", icon: Instagram },
+  { name: "X", href: "#", icon: Twitter },
   { name: "Facebook", href: "#", icon: Facebook },
-  { name: "TikTok", href: "#", icon: FaTiktok },
+  { name: "Instagram", href: "#", icon: Instagram },
+  // { name: "TikTok", href: "#", icon: FaTiktok },  *->find a way to incooperate tiktok without hydration issues
 
 ];
 
