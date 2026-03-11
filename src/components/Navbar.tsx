@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {Menu,X,Twitter,Linkedin,Instagram,ArrowRight, Facebook,} from "lucide-react";
 import { FaTiktok } from "react-icons/fa";
 import {motion,AnimatePresence,useScroll,useMotionValueEvent,} from "framer-motion";
@@ -11,8 +11,34 @@ import { IconWrapper } from "./HydrationSafeIcon";
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const [hidden, setHidden] = useState(false);
   const { scrollY } = useScroll();
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (pathname === "/") {
+      // Already on home page, scroll to top
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // Navigate to home page
+      router.push("/");
+      // Scroll to top after navigation (handled by browser)
+    }
+    setIsOpen(false); // Close mobile menu if open
+  };
+
+  const handleHomeClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (pathname === "/") {
+      // Already on home page, scroll to top
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // Navigate to home page
+      router.push("/");
+    }
+    setIsOpen(false); // Close mobile menu if open
+  };
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
@@ -75,14 +101,17 @@ const socialLinks = [
         <div className="w-full max-w-[1920px] mx-auto px-6 lg:px-12 h-20 md:h-24 flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr]">
           {/* Left Section: Logo */}
           <div className="flex justify-start items-center">
-            <Link href="/" className="flex flex-col group">
+            <button
+              onClick={handleLogoClick}
+              className="flex flex-col group text-left cursor-pointer hover:opacity-90 transition-opacity"
+            >
               <span className="font-montserrat font-extrabold text-2xl text-[#040F2D] tracking-tight leading-none transition-colors">
                 SPARK<span className="text-[#DFA236]">8</span>EDGE
               </span>
               <span className="block font-inter text-[0.55rem] sm:text-[0.6rem] font-semibold text-[#6D8299] uppercase tracking-widest mt-1 group-hover:text-[#DFA236] transition-colors duration-300">
                 Spark your future, ignite your brand
               </span>
-            </Link>
+            </button>
           </div>
 
           {/* Center Section: Navigation Links */}
@@ -90,6 +119,26 @@ const socialLinks = [
             <div className="flex items-center gap-8 lg:gap-12">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
+                if (link.name === "Home") {
+                  return (
+                    <button
+                      key={link.name}
+                      onClick={handleHomeClick}
+                      className={`relative group font-inter md:text-xs lg:text-sm font-semibold transition-colors uppercase tracking-wide ${
+                        isActive
+                          ? "text-[#DFA236]"
+                          : "text-[#040F2D] hover:text-[#DFA236]"
+                      }`}
+                    >
+                      {link.name}
+                      <span
+                        className={`absolute -bottom-1 left-0 h-0.5 bg-[#DFA236] transition-all duration-300 ${
+                          isActive ? "w-full" : "w-0 group-hover:w-full"
+                        }`}
+                      />
+                    </button>
+                  );
+                }
                 return (
                   <Link
                     key={link.name}
@@ -208,6 +257,29 @@ const socialLinks = [
                   >
                     {navLinks.map((link) => {
                       const isActive = pathname === link.href;
+                      if (link.name === "Home") {
+                        return (
+                          <motion.li
+                            key={link.name}
+                            variants={{
+                              hidden: { opacity: 0, x: 50 },
+                              show: { opacity: 1, x: 0 },
+                            }}
+                          >
+                            <button
+                              onClick={handleHomeClick}
+                              className={`flex items-center justify-between w-full p-4 rounded-lg font-montserrat font-bold text-lg transition-all duration-300 ${
+                                isActive
+                                  ? "bg-[#DFA236] text-[#040F2D]"
+                                  : "text-white hover:bg-white/10 hover:pl-6"
+                              }`}
+                            >
+                              {link.name}
+                              {isActive && <ArrowRight size={20} />}
+                            </button>
+                          </motion.li>
+                        );
+                      }
                       return (
                         <motion.li
                           key={link.name}
