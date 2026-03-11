@@ -152,7 +152,7 @@ const TECHNOLOGIES_DATA = [
 
 function CurriculumSection() {
   return (
-    <section className="min-h-screen md:snap-start bg-[#F4F4F9] flex items-center justify-center px-6 py-16 md:py-24 overflow-hidden relative">
+    <section className="min-h-screen md:snap-start bg-[#F4F4F9] flex items-center justify-center px-4 sm:px-6 py-12 sm:py-16 md:py-24 overflow-hidden relative">
       <div
         className="absolute inset-0 opacity-5"
         style={{
@@ -167,40 +167,45 @@ function CurriculumSection() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="max-w-7xl mx-auto w-full relative z-10"
+        className="max-w-7xl mx-auto w-full relative z-10 px-2 sm:px-4"
       >
         <motion.header
           variants={fadeInUp}
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          <h2 className="font-montserrat font-extrabold text-4xl md:text-6xl text-[#040F2D] uppercase mb-6">
+          <h2 className="font-montserrat font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#040F2D] uppercase mb-4 sm:mb-6">
             Choose Your Weapon.
           </h2>
-          <p className="font-inter text-lg text-[#6D8299] max-w-3xl mx-auto">
+          <p className="font-inter text-base sm:text-lg md:text-xl text-[#6D8299] max-w-3xl mx-auto px-4">
             Master the tools that are redefining the creative industry. From AI
             agents to cinematic color grading.
           </p>
         </motion.header>
 
         <div
-          className="grid grid-cols-2 gap-4 md:gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
           role="list"
         >
           {TECHNOLOGIES_DATA.map((tech) => (
             <motion.article
               key={tech.name}
               variants={fadeInUp}
-              className="bg-white p-4 rounded-xl shadow-sm border border-gray-200 hover:border-[#DFA236] hover:shadow-md transition-all group min-h-[120px] flex flex-col justify-center break-words"
+              className="bg-white p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl shadow-sm hover:shadow-lg border border-gray-100 hover:border-[#DFA236] transition-all duration-300 group flex flex-col justify-center h-full min-h-[100px] sm:min-h-[120px]"
               role="listitem"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ y: -4, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <h3 className="font-montserrat font-bold text-[#040F2D] group-hover:text-[#DFA236] transition-colors text-sm md:text-lg leading-tight mb-1">
-                {tech.name}
-              </h3>
-              <p className="text-xs md:text-sm text-gray-500 mt-1 font-inter">
-                {tech.category}
-              </p>
+              <div className="space-y-1 sm:space-y-2">
+                <h3 className="font-montserrat font-bold text-[#040F2D] group-hover:text-[#DFA236] transition-colors text-sm sm:text-base md:text-lg leading-tight line-clamp-1">
+                  {tech.name}
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-500 font-inter font-medium">
+                  {tech.category}
+                </p>
+                <p className="text-xs text-gray-400 font-inter line-clamp-2 mt-1 hidden sm:block">
+                  {tech.description}
+                </p>
+              </div>
             </motion.article>
           ))}
         </div>
