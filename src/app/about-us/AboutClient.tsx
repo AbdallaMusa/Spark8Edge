@@ -3,13 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Users,
-  Briefcase,
-  CheckCircle2,
-} from "lucide-react";
+import {ChevronLeft,ChevronRight,Users,Briefcase,CheckCircle2,} from "lucide-react";
 import Image from "next/image";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { Footer } from "@/components/Footer";
@@ -43,12 +37,15 @@ function CinematicHeroSection() {
           src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?q=80&w=2070"
           alt="Team working together on laptops in a bright, modern workspace"
           fill
-          className="object-cover object-center brightness-[0.85]"
+          className="object-cover object-center"
           priority
           sizes="100vw"
           loading="eager"
           quality={100}
         />
+        {/* Enhanced permanent overlay for better text readability across all devices */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-black/15" />
       </motion.div>
 
       <motion.div
@@ -75,12 +72,16 @@ function CinematicHeroSection() {
           <span className="text-[#DFA236]">With Corporate Innovation</span>
         </motion.h1>
 
-        <motion.div variants={fadeInUp} transition={{ delay: 0.2 }} className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]">
+        <motion.div
+          variants={fadeInUp}
+          transition={{ delay: 0.2 }}
+          className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]"
+        >
           <p className="font-inter text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8 md:mb-12">
             Spark8Edge bridges the gap between ambitious youth seeking tech
             careers and organizations needing fresh talent. We transform
-            Nairobi's untapped potential into skilled professionals ready
-            to drive business growth.
+            Nairobi's untapped potential into skilled professionals ready to
+            drive business growth.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 text-sm md:text-base">
             {HERO_FEATURES.map((feature) => (
@@ -275,9 +276,9 @@ function ArchitectsSection() {
               </h2>
               <p className="font-inter text-lg text-gray-300 leading-relaxed">
                 Vanessa Mwando founded Spark8Edge with a clear mission: to
-                bridge the critical gap between Nairobi's unemployed youth
-                and corporations seeking innovative talent. Her vision
-                transforms potential into professional excellence.
+                bridge the critical gap between Nairobi's unemployed youth and
+                corporations seeking innovative talent. Her vision transforms
+                potential into professional excellence.
               </p>
             </div>
 
@@ -314,9 +315,8 @@ function ArchitectsSection() {
             </div>
 
             <blockquote className="pl-6 border-l-4 border-[#DFA236] italic text-gray-300 font-inter text-lg">
-              "Every unemployed youth represents untapped potential.
-              Spark8Edge is the catalyst that transforms potential into
-              success."
+              "Every unemployed youth represents untapped potential. Spark8Edge
+              is the catalyst that transforms potential into success."
             </blockquote>
           </motion.div>
         </div>

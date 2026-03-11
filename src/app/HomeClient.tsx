@@ -155,7 +155,7 @@ function SplitHeroPanel({
             src={image}
             alt={title}
             fill
-            className="object-cover object-center brightness-[0.85]"
+            className="object-cover object-center"
             priority={priority}
             sizes="(max-width: 768px) 100vw, 50vw"
             loading={priority ? "eager" : "lazy"}
@@ -163,8 +163,9 @@ function SplitHeroPanel({
             quality={100}
           />
         </div>
-      {/* Permanent overlay for consistent text readability */}
-      <div className="absolute inset-0 bg-black/40" />
+      {/* Enhanced permanent overlay for better text readability across all devices */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
+      <div className="absolute inset-0 bg-black/15" />
       <div
         className="absolute inset-0 transition-opacity duration-500 ease-out"
         style={createNormalizedStyle({
@@ -175,16 +176,16 @@ function SplitHeroPanel({
 
       <div className="relative z-10 text-center px-6 py-12 max-w-xl">
         <HeadingTag
-          className="font-montserrat font-extrabold text-3xl sm:text-5xl md:text-6xl uppercase mb-4 leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]"
-          style={createNormalizedStyle({ color: textColor })}
+          className="font-montserrat font-extrabold text-3xl sm:text-5xl md:text-6xl uppercase mb-4 leading-tight text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]"
+          style={createNormalizedStyle({ color: textColor === "#040F2D" ? "white" : textColor })}
         >
           {title}
         </HeadingTag>
 
         <div>
           <p
-            className="font-inter text-lg mb-8 font-semibold drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]"
-            style={createNormalizedStyle({ color: descColor || textColor })}
+            className="font-inter text-lg mb-8 font-semibold text-white/90 drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)]"
+            style={createNormalizedStyle({ color: descColor || (textColor === "#040F2D" ? "#DFA236" : textColor) })}
           >
             {description}
           </p>

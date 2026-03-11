@@ -2,14 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import {
-  Shield,
-  Zap,
-  BarChart3,
-  ArrowDown,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import {Shield,Zap,BarChart3,ArrowDown,ChevronLeft,ChevronRight,} from "lucide-react";
 import { useState, FormEvent } from "react";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { Footer } from "@/components/Footer";
@@ -610,16 +603,19 @@ function HeroSection() {
         src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070"
         alt="Business team collaborating in a modern office"
         fill
-        className="object-cover object-center brightness-[0.85]"
+        className="object-cover object-center"
         priority
         sizes="100vw"
         loading="eager"
         quality={100}
       />
       </motion.div>
+      {/* Enhanced permanent overlay for better text readability across all devices */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
+      <div className="absolute inset-0 bg-black/15" />
       <div
         className="absolute inset-0 bg-[#040F2D] transition-opacity duration-500 ease-out"
-        style={{ opacity: isButtonHovered ? 0.85 : 0 }}
+        style={{ opacity: isButtonHovered ? 0.4 : 0 }}
       />
 
       <motion.div
@@ -630,7 +626,7 @@ function HeroSection() {
       >
         <motion.h1
           variants={fadeInUp}
-          className="font-montserrat font-extrabold text-4xl md:text-5xl lg:text-6xl text-white uppercase mb-4 md:mb-6 leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]"
+          className="font-montserrat font-extrabold text-4xl md:text-5xl lg:text-6xl text-white uppercase mb-4 md:mb-6 leading-tight drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]"
         >
           Future-Proof Your Narrative.
         </motion.h1>

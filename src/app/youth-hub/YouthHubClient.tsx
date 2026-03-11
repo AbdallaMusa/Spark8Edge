@@ -1,25 +1,9 @@
 "use client";
 
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useSpring,
-  useInView,
-} from "framer-motion";
+import {motion,useScroll,useTransform,useSpring,useInView,} from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  ArrowDown,
-  Users,
-  Briefcase,
-  Target,
-  TrendingUp,
-  Clock,
-  MapPin,
-  CheckCircle2,
-  Rocket,
-} from "lucide-react";
+import {ArrowDown,Users,Briefcase,Target,TrendingUp,Clock,MapPin,CheckCircle2,Rocket,} from "lucide-react";
 import { useState, FormEvent, useEffect } from "react";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { Footer } from "@/components/Footer";
@@ -54,15 +38,18 @@ function HeroSection() {
         src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070"
         alt="Students collaborating in a modern learning environment"
         fill
-        className="object-cover object-center brightness-[0.85]"
+        className="object-cover object-center"
         priority
         sizes="100vw"
         loading="eager"
         quality={100}
       />
+      {/* Enhanced permanent overlay for better text readability across all devices */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
+      <div className="absolute inset-0 bg-black/15" />
       <div
         className="absolute inset-0 bg-[#040F2D] transition-opacity duration-500 ease-out"
-        style={{ opacity: isButtonHovered ? 0.7 : 0 }}
+        style={{ opacity: isButtonHovered ? 0.4 : 0 }}
       />
 
       <motion.div
@@ -73,14 +60,14 @@ function HeroSection() {
       >
         <motion.h1
           variants={fadeInUp}
-          className="font-montserrat font-extrabold text-5xl md:text-7xl text-white uppercase mb-6 leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]"
+          className="font-montserrat font-extrabold text-5xl md:text-7xl text-white uppercase mb-6 leading-tight drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]"
         >
           Unleash Your Creative Potential.
         </motion.h1>
 
         <motion.p
           variants={fadeInUp}
-          className="font-inter text-xl md:text-2xl text-[#F4F4F9] mb-12 leading-relaxed drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]"
+          className="font-inter text-xl md:text-2xl text-white/90 mb-12 leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)]"
         >
           Join Nairobi's elite offline training ground. Master AI, Video, and
           Design.
