@@ -34,7 +34,7 @@ export function ServicesAccordionSection() {
   ];
 
   return (
-    <section className="min-h-screen md:snap-start w-full bg-gradient-to-b from-white to-[#F4F4F9] flex items-center justify-center py-16 md:py-24 px-6 relative overflow-hidden">
+    <section className="w-full bg-gradient-to-b from-white to-[#F4F4F9] flex items-center justify-center py-16 md:py-24 px-6 relative overflow-hidden">
       <motion.div
         variants={staggerContainer}
         initial="hidden"

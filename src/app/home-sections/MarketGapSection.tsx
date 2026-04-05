@@ -27,7 +27,7 @@ export function MarketGapSection() {
   ];
 
   return (
-    <section className="min-h-screen md:snap-start w-full bg-[#F4F4F9] flex items-center justify-center py-16 md:py-24 px-6">
+    <section className="w-full bg-[#F4F4F9] flex items-center justify-center py-16 md:py-24 px-6">
       <motion.div
         variants={staggerContainer}
         initial="hidden"

@@ -7,16 +7,17 @@ import {ChevronLeft,ChevronRight,Users,Briefcase,CheckCircle2,} from "lucide-rea
 import Image from "next/image";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { Footer } from "@/components/Footer";
+import FounderSection from "@/components/FounderSection";
 
 export default function AboutClient() {
   return (
     <main className="flex-1">
       <CinematicHeroSection />
       <ScrollytellingSection />
-      <ArchitectsSection />
+      <FounderSection />
       <PartnersSection />
       <DualCTASection />
-      <div className="md:snap-start w-full border-t border-white/5 bg-[#040F2D] relative">
+      <div className="w-full border-t border-white/5 bg-[#040F2D] relative">
         <Footer />
       </div>
     </main>
@@ -31,7 +32,7 @@ const HERO_FEATURES = [
 
 function CinematicHeroSection() {
   return (
-    <section className="min-h-screen md:snap-start w-full flex items-center justify-center relative overflow-hidden px-6 py-16 md:py-24">
+    <section className="w-full flex items-center justify-center relative overflow-hidden px-6 py-16 md:py-32">
       <motion.div className="absolute inset-0">
         <Image
           src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?q=80&w=2070"
@@ -144,7 +145,7 @@ function ScrollytellingSection() {
   const currentStep = SCROLLYTELLING_STEPS[currentIndex];
 
   return (
-    <section className="min-h-screen md:snap-start w-full bg-[#F4F4F9] flex items-center justify-center py-16 md:py-24 px-6 overflow-hidden">
+    <section className="w-full bg-[#F4F4F9] flex items-center justify-center py-16 md:py-24 px-6 overflow-hidden">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -230,101 +231,6 @@ function ScrollytellingSection() {
   );
 }
 
-function ArchitectsSection() {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <section className="min-h-screen md:snap-start w-full bg-[#040F2D] flex items-center justify-center py-16 md:py-24 px-6 overflow-hidden relative">
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-        className="max-w-7xl mx-auto w-full"
-      >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Image Column */}
-          <motion.div variants={fadeInUp} className="lg:col-span-5 relative">
-            <div className="relative aspect-square lg:aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-              <Image
-                src="/Images/22.png"
-                alt="Vanessa Mwando - Founder and CEO of Spark8Edge, youth empowerment and corporate training expert"
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                className="object-cover hover:scale-105 transition-transform duration-700"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#040F2D] via-transparent to-transparent opacity-80" />
-              <div className="absolute bottom-0 left-0 w-full p-8">
-                <h3 className="font-montserrat font-bold text-2xl md:text-3xl text-white mb-1">
-                  Vanessa Mwando
-                </h3>
-                <p className="font-inter text-sm text-[#DFA236] font-semibold uppercase tracking-wider">
-                  Founder & CEO
-                </p>
-              </div>
-            </div>
-            {/* Decorative Element */}
-            <div className="absolute -z-10 top-6 -right-6 w-full h-full border border-[#DFA236]/20 rounded-2xl hidden md:block" />
-          </motion.div>
-
-          {/* Content Column */}
-          <motion.div variants={fadeInUp} className="lg:col-span-7 space-y-8">
-            <div>
-              <h2 className="font-montserrat font-extrabold text-3xl md:text-4xl lg:text-5xl text-white mb-6 leading-tight">
-                Visionary Leadership
-              </h2>
-              <p className="font-inter text-lg text-gray-300 leading-relaxed">
-                Vanessa Mwando founded Spark8Edge with a clear mission: to
-                bridge the critical gap between Nairobi's unemployed youth and
-                corporations seeking innovative talent. Her vision transforms
-                potential into professional excellence.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-white/5 rounded-xl p-6 border border-white/10 hover:border-[#DFA236]/50 transition-all group">
-                <div className="w-10 h-10 rounded-full bg-[#DFA236]/10 flex items-center justify-center mb-4 group-hover:bg-[#DFA236] transition-colors">
-                  <Users
-                    className="text-[#DFA236] group-hover:text-[#040F2D]"
-                    size={20}
-                  />
-                </div>
-                <h4 className="font-montserrat font-bold text-lg text-white mb-2">
-                  For Youth
-                </h4>
-                <p className="font-inter text-sm text-gray-400">
-                  Free technical training & mentorship pathways to employment.
-                </p>
-              </div>
-
-              <div className="bg-white/5 rounded-xl p-6 border border-white/10 hover:border-[#DFA236]/50 transition-all group">
-                <div className="w-10 h-10 rounded-full bg-[#DFA236]/10 flex items-center justify-center mb-4 group-hover:bg-[#DFA236] transition-colors">
-                  <Briefcase
-                    className="text-[#DFA236] group-hover:text-[#040F2D]"
-                    size={20}
-                  />
-                </div>
-                <h4 className="font-montserrat font-bold text-lg text-white mb-2">
-                  For Organizations
-                </h4>
-                <p className="font-inter text-sm text-gray-400">
-                  Access to pre-vetted, job-ready talent pools.
-                </p>
-              </div>
-            </div>
-
-            <blockquote className="pl-6 border-l-4 border-[#DFA236] italic text-gray-300 font-inter text-lg">
-              "Every unemployed youth represents untapped potential. Spark8Edge
-              is the catalyst that transforms potential into success."
-            </blockquote>
-          </motion.div>
-        </div>
-      </motion.div>
-    </section>
-  );
-}
-
 const TECHNOLOGIES_DATA = [
   {
     name: "DaVinci Resolve",
@@ -390,7 +296,7 @@ const TECHNOLOGIES_DATA = [
 
 function PartnersSection() {
   return (
-    <section className="min-h-screen md:snap-start w-full bg-[#F4F4F9] flex items-center justify-center py-16 md:py-24 px-6 overflow-hidden">
+    <section className="w-full bg-[#F4F4F9] flex items-center justify-center py-16 md:py-24 px-6 overflow-hidden">
       <div
         className="absolute inset-0 opacity-5"
         style={{
@@ -479,8 +385,8 @@ function PartnersSection() {
 
 function DualCTASection() {
   return (
-    <section className="min-h-screen md:h-screen md:snap-start w-full flex flex-col">
-      <div className="flex-grow flex flex-col md:flex-row relative">
+    <section className="w-full flex flex-col">
+      <div className="flex-grow flex flex-col md:flex-row relative min-h-[80vh] md:min-h-[60vh]">
         <motion.div
           variants={fadeInUp}
           className="relative flex-1 py-16 md:py-0 h-auto md:h-full flex items-center justify-center overflow-hidden group bg-[#DFA236]"

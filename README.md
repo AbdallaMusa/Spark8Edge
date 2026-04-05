@@ -48,6 +48,88 @@ npm run dev
 
 Open http://localhost:3000 with your browser to see the result.
 
+### Environment Variables Setup
+
+For the application to function properly, you need to configure environment variables. The application uses different environment variables for local development and production.
+
+#### 1. Local Development Setup (.env.local)
+
+1. **Copy the example file**:
+   ```sh
+   cp .env.example .env.local
+   ```
+
+2. **Configure required variables** in `.env.local`:
+
+   | Variable | Required | Description | Example/Value |
+   |----------|----------|-------------|---------------|
+   | `SITE_URL` | Yes | Site URL for sitemap and canonical URLs | `https://www.spark8edge.co.ke` |
+   | `NEXT_PUBLIC_SITE_URL` | Yes | Public site URL | `https://www.spark8edge.co.ke` |
+   | `NEXT_PUBLIC_API_URL` | Yes | API base URL | `https://www.spark8edge.co.ke/api` |
+   | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Yes | Cloudflare Turnstile site key for spam protection | Get from [Cloudflare Dashboard](https://dash.cloudflare.com/?to=/:account/turnstile) |
+   | `TURNSTILE_SECRET_KEY` | Yes | Cloudflare Turnstile secret key | Get from [Cloudflare Dashboard](https://dash.cloudflare.com/?to=/:account/turnstile) |
+   | `NODE_ENV` | Yes | Node.js environment | `development` |
+
+3. **Optional variables** (uncomment as needed):
+   - **Email service**: Currently forms log to console. Uncomment and configure to send actual emails:
+     ```env
+     # RESEND_API_KEY=your_resend_api_key_here
+     # CONTACT_EMAIL=info@spark8edge.co.ke
+     # EMAIL_FROM=info@spark8edge.co.ke
+     ```
+   - **Bundle analyzer**: Uncomment to enable during build:
+     ```env
+     # ANALYZE=true
+     ```
+
+4. **Restart the development server** after updating environment variables:
+   ```sh
+   npm run dev
+   ```
+
+#### 2. Production Setup (Vercel Dashboard)
+
+For production deployment on Vercel:
+
+1. Go to your project in [Vercel Dashboard](https://vercel.com/dashboard)
+2. Select your project → **Settings** → **Environment Variables**
+3. Add **all variables** from `.env.example` with your production values:
+   - `SITE_URL`
+   - `NEXT_PUBLIC_SITE_URL`
+   - `NEXT_PUBLIC_API_URL`
+   - `NEXT_PUBLIC_TURNSTILE_SITE_KEY`
+   - `TURNSTILE_SECRET_KEY`
+   - `NODE_ENV` (set to `production`)
+
+4. **Deploy** your application after adding variables.
+
+#### 3. Security Notes
+
+⚠️ **Important Security Practices**:
+- **Never commit** `.env.local` or any file containing real secrets to Git
+- Use different API keys for development and production environments
+- Rotate secrets regularly and audit access
+- Vercel automatically provides `NEXT_PUBLIC_VERCEL_ANALYTICS_ID` and `VERCEL` environment variables
+- GitHub Actions CI/CD uses repository secrets for `NEXT_PUBLIC_TURNSTILE_SITE_KEY`
+
+#### 4. Environment Variable Reference
+
+The application uses the following environment variables:
+
+| Variable | Type | Purpose | Required |
+|----------|------|---------|----------|
+| `SITE_URL` | Server + Client | Site URL for sitemap generation | Yes |
+| `NEXT_PUBLIC_SITE_URL` | Client | Public site URL for canonical tags | Yes |
+| `NEXT_PUBLIC_API_URL` | Client | API endpoint URL | Yes |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Client | Cloudflare Turnstile site key | Yes |
+| `TURNSTILE_SECRET_KEY` | Server-only | Cloudflare Turnstile secret key | Yes |
+| `NODE_ENV` | Server | Node.js environment (development/production) | Yes |
+| `ANALYZE` | Build-time | Enable bundle analyzer | No |
+| `VERCEL` | Auto-set | Vercel platform detection | No |
+| `ORCHID_ENV` | Optional | Orchid deployment detection | No |
+
+**Note**: Variables prefixed with `NEXT_PUBLIC_` are exposed to the browser. Other variables are server-only.
+
 ## 🛠️ Tech Stack
 
 - **Framework**: Next.js (React)
@@ -62,8 +144,65 @@ Open http://localhost:3000 with your browser to see the result.
 
 ## 📦 Version History
 
+### Version 0.4.0 (April 2026) - Reliability, Security & Scalability Enhancement
+**Current Version** - Focus: Comprehensive reliability improvements, security hardening, and scalability enhancements for production readiness.
+
+#### Key Features:
+- **Security Hardening**:
+  - Enhanced CSP (Content Security Policy) with stricter directives
+  - Removed deprecated `formsubmit.co` references from CSP
+  - Added rate limiting guidance for API endpoints
+  - Improved secret management documentation
+
+- **Reliability Improvements**:
+  - Production-ready error logging (replacing `console.log` in API routes)
+  - Enhanced validation for contact form submissions
+  - Added structured logging for better observability
+  - Improved error handling with user-friendly messages
+
+- **Scalability Enhancements**:
+  - Optimized Next.js configuration for better caching performance
+  - Enhanced image optimization with AVIF priority
+  - Improved API route architecture for edge runtime compatibility
+  - Added guidance for horizontal scaling considerations
+
+- **Documentation Updates**:
+  - Comprehensive `.env.example` with all required environment variables
+  - Updated deployment guidelines for reliability best practices
+  - Enhanced security checklist for production deployments
+  - Added scalability considerations for high-traffic scenarios
+
+#### Technical Improvements:
+- Updated project documentation to reflect the move to `v0.4.0`
+- Enhanced security headers configuration in `next.config.ts`
+- Improved contact API validation and error handling
+- Added production logging recommendations
+- Maintained all existing Lighthouse performance scores
+
+### Version 0.3.0 (March 2026) - Mobile Experience & PWA Foundation
+Focus: Foundational Progressive Web App (PWA) features and a native-like mobile user experience.
+
+#### Key Features:
+- **Progressive Web App (PWA) Foundation**:
+  - Added a `manifest.json` file to allow users to "Add to Home Screen".
+  - Enables a more integrated, app-like experience by hiding the browser UI.
+  - Sets the stage for future offline capabilities.
+
+- **Native-Feel Mobile Scrolling**:
+  - Implemented CSS Scroll Snapping utilities (`.scroll-snap-x`).
+  - This creates a smooth, paginated feel for horizontal carousels, such as the "Choose Your Weapon" cards in the Youth Hub, mimicking native app behavior.
+
+- **Enhanced Mobile UX**:
+  - Provided guidance for optimizing virtual keyboard on forms using `inputmode`.
+  - Recommended dynamic theme meta-tagging for a seamless browser UI integration on mobile.
+
+#### Technical Improvements:
+- Updated project documentation to reflect the move to `v0.3.0`.
+- Added new CSS utilities for enhanced mobile interaction patterns.
+- Maintained perfect Lighthouse scores while adding new capabilities.
+
 ### Version 0.2.1 (March 2026) - Navigation & Mobile Optimization
-**Current Version** - Focus: Enhanced navigation experience and mobile UX improvements.
+Focus: Enhanced navigation experience and mobile UX improvements.
 
 #### Key Features:
 - **Enhanced Navigation**:
@@ -98,8 +237,8 @@ Open http://localhost:3000 with your browser to see the result.
   - **Consistency**: Applied same ordering across Footer and mobile navigation menu
 - Maintained all existing Lighthouse performance scores
 
-#### Files Changed:
-- `package.json` - Updated to version 0.2.1
+#### Key Files Changed:
+- `package.json` - Updated to version 0.3.0
 - `src/components/Navbar.tsx` - Added smooth scroll-to-top functionality and updated social links ordering
 - `src/components/ContactPopover.tsx` - New interactive component
 - `src/components/Footer.tsx` - Integrated ContactPopover with conditional logic and updated social links ordering
@@ -567,4 +706,4 @@ For contribution guidelines, please contact the development team directly.
 
 **Spark8Edge** – Bridging East Africa's creative ecosystem with global markets through AI-powered talent development and strategic brand intelligence.
 
-*Version: 0.2.1 | Last Updated: March 2026*
+*Version: 0.5.0 | Last Updated: April 2026*

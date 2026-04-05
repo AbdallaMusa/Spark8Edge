@@ -167,6 +167,11 @@
     min-width: 44px;
   }
   
+  /* Horizontal scrolling utilities (no snap) */
+  .overflow-x-auto {
+    overflow-x: auto;
+  }
+
   /* Better mobile font scaling */
   .text-mobile-lg {
     font-size: clamp(1.125rem, 4vw, 1.5rem);

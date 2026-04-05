@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { Twitter, Linkedin, Instagram, ArrowRight, Facebook } from "lucide-react";
-import { FaTiktok } from "react-icons/fa";
+import { Twitter, Linkedin, Instagram, ArrowRight, Facebook, Music } from "lucide-react";
 import { IconWrapper } from "./HydrationSafeIcon";
 import { ContactPopover } from "./ContactPopover";
 
@@ -19,7 +18,7 @@ const socialLinks = [
   { name: "Instagram", href: "#", icon: Instagram },
   { name: "X", href: "#", icon: Twitter },
   { name: "Facebook", href: "#", icon: Facebook },
-  { name: "TikTok", href: "#", icon: FaTiktok }, 
+  { name: "TikTok", href: "#", icon: Music }, 
 
 ];
 

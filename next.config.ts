@@ -5,7 +5,6 @@ const withBundleAnalyzer = (process.env.ANALYZE === 'true' || process.env.ANALYZ
   require('@next/bundle-analyzer')({ enabled: true }) : (x: NextConfig) => x;
 
 const nextConfig: NextConfig = {
-  output: 'standalone',
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
@@ -16,24 +15,23 @@ const nextConfig: NextConfig = {
     // Configure device sizes to generate more optimal image variations
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Image quality settings for optimization
+    qualities: [100, 75, 50, 25], // Add 100 to support explicit quality=100 usage
     // Minimum cache TTL in seconds for optimized images
-    minimumCacheTTL: 60 * 60 * 24, // 1 day
-    // Remote patterns for external images
+    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
+    // Remote patterns for external images - specific domains only to prevent SSRF
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: 'images.unsplash.com',
       },
       {
-        protocol: 'http',
-        hostname: '**',
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
       },
     ],
   },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  allowedDevOrigins: ['*.orchids.page', 'http://192.168.1.57:3000'],
+  allowedDevOrigins: process.env.NODE_ENV === 'development' ? ['*.orchids.page'] : [],
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
@@ -72,13 +70,21 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Cross-Origin-Embedder-Policy',
-            value: 'require-corp'
+            value: 'credentialless'
           },
           {
             key: 'Cross-Origin-Resource-Policy',
             value: 'same-origin'
           }
         ]
+      },
+      // Cache HTML pages (Vercel page caching)
+      {
+        source: '/((?!_next|api|favicon).*)',
+        headers: [{
+          key: 'Cache-Control',
+          value: 's-maxage=300, stale-while-revalidate=600'
+        }]
       },
       // Cache static assets
       {
@@ -132,7 +138,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self' data: blob: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://formsubmit.co https://va.vercel-scripts.com https://vitals.vercel-insights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: http: blob:; font-src 'self' data: https:; connect-src 'self' https://challenges.cloudflare.com https://formsubmit.co https://va.vercel-scripts.com https://vitals.vercel-insights.com ws://localhost:3000; frame-src 'self' https://challenges.cloudflare.com; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co; frame-ancestors 'self'; upgrade-insecure-requests;"
+            value: "default-src 'self' data: blob: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://va.vercel-scripts.com https://vitals.vercel-insights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: http: blob:; font-src 'self' data: https:; connect-src 'self' https://challenges.cloudflare.com https://va.vercel-scripts.com https://vitals.vercel-insights.com ws://localhost:3000; frame-src 'self' https://challenges.cloudflare.com; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests;"
           }
         ]
       }

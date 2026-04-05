@@ -3,13 +3,19 @@ import { Navbar } from "@/components/Navbar";
 import HomeClient from "./HomeClient";
 
 export const metadata: Metadata = {
-  title: "Spark8Edge | Empowering Kenya's Next Generation through AI & Strategic Brand Intelligence",
-  description: "World-class AI training, strategic brand intelligence, and curated creative talent for Kenya and East Africa. Bridge the gap between youth talent and corporate innovation.",
+  title: "Spark8Edge — AI Branding & Youth Development Agency in Kenya",
+  description: "Spark8Edge helps Kenyan brands grow globally and trains the next generation of creative talent through AI-powered strategy and brand intelligence.",
+  keywords: ["brand agency Kenya", "digital marketing Kenya", "AI branding agency Nairobi", "youth development Kenya"],
   openGraph: {
-    title: "Spark8Edge | Empowering Kenya's Next Generation through AI & Strategic Brand Intelligence",
-    description: "World-class AI training, strategic brand intelligence, and curated creative talent for Kenya and East Africa.",
-    type: "website",
-    url: "https://spark8edge.co.ke",
+    title: "Spark8Edge — AI Branding & Youth Development Agency in Kenya",
+    description: "Spark8Edge helps Kenyan brands grow globally and trains the next generation of creative talent through AI-powered strategy and brand intelligence.",
+    url: 'https://www.spark8edge.co.ke',
+    siteName: 'Spark8Edge',
+    locale: 'en_KE',
+    type: 'website',
+  },
+  alternates: {
+    canonical: 'https://www.spark8edge.co.ke',
   },
 };
 

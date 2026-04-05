@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.spark8edge.co.ke/sitemap.xml

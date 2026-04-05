@@ -17,7 +17,7 @@ export default function YouthHubClient() {
       <MethodologySection />
       <TestimonialsSection />
       <IntakeFormSection />
-      <div className="md:snap-start w-full border-t border-white/5 bg-[#040F2D] relative">
+      <div className="w-full border-t border-white/5 bg-[#040F2D] relative">
         <Footer />
       </div>
     </main>
@@ -33,7 +33,7 @@ function HeroSection() {
   const [isButtonHovered, setIsButtonHovered] = useState(false);
 
   return (
-    <section className="min-h-screen md:snap-start flex items-center justify-center relative overflow-hidden px-6 py-16 md:py-24">
+    <section className="w-full flex items-center justify-center relative overflow-hidden px-6 py-16 md:py-24">
       <Image
         src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070"
         alt="Students collaborating in a modern learning environment"
@@ -152,7 +152,7 @@ const TECHNOLOGIES_DATA = [
 
 function CurriculumSection() {
   return (
-    <section className="min-h-screen md:snap-start bg-[#F4F4F9] flex items-center justify-center px-4 sm:px-6 py-12 sm:py-16 md:py-24 overflow-hidden relative">
+    <section className="w-full bg-[#F4F4F9] flex items-center justify-center px-4 sm:px-6 py-12 sm:py-16 md:py-24 overflow-hidden relative">
       <div
         className="absolute inset-0 opacity-5"
         style={{
@@ -243,7 +243,7 @@ function MethodologySection() {
   ];
 
   return (
-    <section className="min-h-screen md:snap-start relative bg-white overflow-hidden flex items-center justify-center px-4 py-16 md:py-24">
+    <section className="w-full relative bg-white overflow-hidden flex items-center justify-center px-4 py-16 md:py-24">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(223,162,54,0.08)_0%,transparent_50%),radial-gradient(circle_at_70%_80%,rgba(6,182,212,0.08)_0%,transparent_50%)]" />
 
       <motion.div
@@ -347,7 +347,7 @@ function TestimonialsSection() {
   ];
 
   return (
-    <section className="min-h-screen md:snap-start relative bg-gradient-to-b from-[#040F2D] to-[#0a1847] overflow-hidden flex items-center justify-center px-4 py-16 md:py-24">
+    <section className="w-full relative bg-gradient-to-b from-[#040F2D] to-[#0a1847] overflow-hidden flex items-center justify-center px-4 py-16 md:py-24">
       <div className="absolute inset-0">
         <motion.div
           animate={{
@@ -573,7 +573,7 @@ function IntakeFormSection() {
       formData.append("cf-turnstile-response", turnstileToken);
 
       const response = await fetch(
-        "https://formsubmit.co/youth@spark8edge.co.ke",
+        "/api/contact",
         {
           method: "POST",
           body: formData,
@@ -606,7 +606,7 @@ function IntakeFormSection() {
   return (
     <section
       id="application-form"
-      className="min-h-screen md:snap-start bg-[#040F2D] relative flex flex-col overflow-hidden pb-0"
+      className="w-full bg-[#040F2D] relative flex flex-col overflow-hidden pb-0"
     >
       {/* Background Elements */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#DFA236]/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
@@ -821,7 +821,7 @@ function IntakeFormSection() {
                   disabled={!isVerified || isSubmitting}
                   className={`w-full mt-4 py-4 bg-[#DFA236] text-[#040F2D] font-montserrat font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-white transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed`}
                 >
-                  {isSubmitting ? "Submitting..." : "Submit Application"}
+                  {isSubmitting ? "Submitting..." : "Apply for the Program"}
                 </button>
 
                 {error && (

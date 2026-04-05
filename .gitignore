@@ -44,5 +44,19 @@ next-env.d.ts
 .env.test.local
 .env.production.local
 
+# Lighthouse reports (build artifacts)
+lighthouse-*.json
+lighthouse-*.html
+lighthouse-final-report.json
+lighthouse-report-desktop.report.html
+lighthouse-report-desktop.report.json
+sitemap.xml
+
+# AI tooling context (private)
+cline_docs/
+
+# VS Code settings (personal)
+.vscode/
+
 # Orchid AI (Since you are removing it)
 .orchids/

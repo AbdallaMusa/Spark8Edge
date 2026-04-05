@@ -3,13 +3,18 @@ import { Navbar } from "@/components/Navbar";
 import OrganizationClient from "./OrganizationClient";
 
 export const metadata: Metadata = {
-  title: "Corporate Solutions | AI-Powered PR & Brand Intelligence for Enterprises",
-  description: "Future-proof your corporate narrative with Spark8Edge's AI-driven crisis management, automated content engines, and predictive analytics for measurable ROI.",
+  title: "Enterprise Brand Intelligence — Spark8Edge Kenya",
+  description: "Strategic brand intelligence and AI-powered marketing solutions for Kenyan enterprises competing in global markets.",
   openGraph: {
-    title: "Corporate Solutions | AI-Powered PR & Brand Intelligence for Enterprises",
-    description: "Enterprise-grade AI solutions for crisis management, content automation, and impact analytics.",
-    type: "website",
-    url: "https://spark8edge.co.ke/organization",
+    title: "Enterprise Brand Intelligence — Spark8Edge Kenya",
+    description: "Strategic brand intelligence and AI-powered marketing solutions for Kenyan enterprises competing in global markets.",
+    url: 'https://www.spark8edge.co.ke/organization',
+    siteName: 'Spark8Edge',
+    locale: 'en_KE',
+    type: 'website',
+  },
+  alternates: {
+    canonical: 'https://www.spark8edge.co.ke/organization',
   },
 };
 

@@ -3,13 +3,18 @@ import { Navbar } from "@/components/Navbar";
 import YouthHubClient from "./YouthHubClient";
 
 export const metadata: Metadata = {
-  title: "Youth Hub | Elite AI & Creative Training for Nairobi's Next Generation",
-  description: "Join Spark8Edge's immersive 12-week bootcamp in AI, video production, product design, and digital storytelling. Transform your creative potential into a professional career.",
+  title: "Youth Development Programs Kenya — Spark8Edge",
+  description: "Join Spark8Edge's youth programs. Hands-on training in AI, branding, and digital skills for Kenya's next generation of creative professionals.",
   openGraph: {
-    title: "Youth Hub | Elite AI & Creative Training for Nairobi's Next Generation",
-    description: "Intensive offline training in Westlands, Nairobi for aspiring creatives and tech professionals.",
-    type: "website",
-    url: "https://spark8edge.co.ke/youth-hub",
+    title: "Youth Development Programs Kenya — Spark8Edge",
+    description: "Join Spark8Edge's youth programs. Hands-on training in AI, branding, and digital skills for Kenya's next generation of creative professionals.",
+    url: 'https://www.spark8edge.co.ke/youth-hub',
+    siteName: 'Spark8Edge',
+    locale: 'en_KE',
+    type: 'website',
+  },
+  alternates: {
+    canonical: 'https://www.spark8edge.co.ke/youth-hub',
   },
 };
 

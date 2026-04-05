@@ -17,7 +17,7 @@ export default function OrganizationClient() {
       <ServicesSuiteSection />
       <CaseStudiesSection />
       <ConsultationFormSection />
-      <div className="md:snap-start w-full border-t border-white/5 bg-[#040F2D] relative">
+      <div className="w-full border-t border-white/5 bg-[#040F2D] relative">
         <Footer />
       </div>
     </main>
@@ -44,7 +44,7 @@ function DataGapSection() {
   ];
 
   return (
-    <section className="min-h-screen md:snap-start w-full bg-[#F4F4F9] flex items-center justify-center py-16 md:py-24 px-6 overflow-hidden">
+    <section className="w-full bg-[#F4F4F9] flex items-center justify-center py-16 md:py-24 px-6 overflow-hidden">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -148,7 +148,7 @@ function ServicesSuiteSection() {
 
   return (
     <section
-      className="min-h-screen md:snap-start w-full bg-gradient-to-b from-[#040F2D] to-[#0a1847] flex items-center justify-center px-6 py-16 md:py-24 overflow-hidden"
+      className="w-full bg-gradient-to-b from-[#040F2D] to-[#0a1847] flex items-center justify-center px-6 py-16 md:py-24 overflow-hidden"
       aria-labelledby="services-heading"
     >
       <motion.div
@@ -290,7 +290,7 @@ function CaseStudiesSection() {
   ];
 
   return (
-    <section className="min-h-screen md:snap-start w-full bg-[#F4F4F9] flex items-center justify-center py-16 md:py-24 px-6 overflow-hidden">
+    <section className="w-full bg-[#F4F4F9] flex items-center justify-center py-16 md:py-24 px-6 overflow-hidden">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -392,9 +392,9 @@ function ConsultationFormSection() {
       formData.append("_subject", `New Corporate Inquiry from ${companyName}`);
       formData.append("cf-turnstile-response", turnstileToken);
 
-      // Using FormSubmit.co endpoint with the email from our site config
+      // Using our new API endpoint
       const response = await fetch(
-        `https://formsubmit.co/${siteConfig.emails.corporate}`,
+        "/api/contact",
         {
           method: "POST",
           body: formData,
@@ -429,7 +429,7 @@ function ConsultationFormSection() {
   return (
     <section
       id="consultation-form"
-      className="min-h-screen md:snap-start bg-[#040F2D] relative flex flex-col overflow-hidden pb-0"
+      className="w-full bg-[#040F2D] relative flex flex-col overflow-hidden pb-0"
     >
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#DFA236]/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4 pointer-events-none" />
@@ -559,7 +559,7 @@ function ConsultationFormSection() {
                 disabled={!isVerified || isSubmitting}
                 className="w-full mt-4 py-4 bg-[#DFA236] text-[#040F2D] font-montserrat font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-white transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? "Submitting..." : "Submit Brief"}
+                {isSubmitting ? "Sending..." : "Book a Strategy Call"}
               </button>
 
               {error && (
@@ -597,7 +597,7 @@ function HeroSection() {
   const [isButtonHovered, setIsButtonHovered] = useState(false);
 
   return (
-    <section className="min-h-screen md:snap-start w-full flex items-center justify-center relative overflow-hidden px-6 py-16 md:py-24">
+    <section className="w-full flex items-center justify-center relative overflow-hidden px-6 py-16 md:py-24">
       <motion.div className="absolute inset-0">
       <Image
         src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070"

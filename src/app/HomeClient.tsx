@@ -7,7 +7,7 @@ import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Sparkles, Target, Zap, Users, Award } from "lucide-react";
 import { TurnstileWidget } from "@/components/TurnstileWidget";
-import { staggerContainer, fadeInUp } from "@/lib/animations";
+import { staggerContainer, fadeInUp, fadeIn } from "@/lib/animations";
 import { Footer } from "@/components/Footer";
 import { createNormalizedStyle } from "@/lib/style-utils";
 
@@ -37,17 +37,90 @@ const NewsletterSection = dynamic(() => import("./home-sections/NewsletterSectio
   ssr: false,
 });
 
+function TrustSignalsSection() {
+  const stats = [
+    { value: "127+", label: "Youth Trained" },
+    { value: "23+", label: "Brands Launched" },
+    { value: "3+", label: "Years in East Africa" },
+  ];
+
+  return (
+    <section className="bg-[#040F2D] py-12 md:py-16">
+      <div className="container mx-auto px-6">
+        {/* Stats Section */}
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          className="mb-12 md:mb-16"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                variants={fadeInUp}
+                className={`flex flex-col items-center text-center ${index < 2 ? 'md:border-r md:border-white/10' : ''}`}
+              >
+                <div className="font-montserrat font-extrabold text-4xl md:text-5xl lg:text-6xl text-[#DFA236] mb-2">
+                  {stat.value}
+                </div>
+                <div className="font-inter font-medium text-sm md:text-base text-white/70 uppercase tracking-wider">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Client Logos Placeholder */}
+        <motion.div 
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="pt-8 md:pt-12 border-t border-white/10"
+        >
+          <div className="text-center mb-8">
+            <div className="font-inter font-medium text-white/60 text-sm md:text-base uppercase tracking-wider mb-4">
+              Trusted by brands across East Africa
+            </div>
+            
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+              {[1, 2, 3, 4].map((i) => (
+                <div 
+                  key={i}
+                  className="w-24 h-12 md:w-32 md:h-16 bg-white/5 rounded-lg flex items-center justify-center"
+                >
+                  <div className="font-inter font-medium text-white/30 text-xs md:text-sm">
+                    Logo {i}
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            <div className="mt-6 font-inter text-xs text-white/40">
+              Placeholder for client logos
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 export default function HomeClient() {
   return (
     <div className="bg-[#040F2D] flex-1">
       <main>
         <SplitHeroSection />
+        <TrustSignalsSection />
         <NexusSection />
         <StatsSection />
         <ServicesAccordionSection />
         <MarketGapSection />
         <NewsletterSection />
-        <div className="md:snap-start w-full border-t border-white/5 bg-[#040F2D] relative">
+        <div className="w-full border-t border-white/5 bg-[#040F2D] relative">
           <Footer />
         </div>
       </main>
@@ -57,16 +130,16 @@ export default function HomeClient() {
 
 function SplitHeroSection() {
   return (
-    <section className="min-h-screen md:h-screen md:snap-start w-full flex flex-col md:flex-row">
+    <section className="min-h-[80vh] md:min-h-screen w-full flex flex-col md:flex-row">
       <SplitHeroPanel
         side="left"
         image="https://images.unsplash.com/photo-1633114072836-15d933c6d3a7?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         overlayColor="#DFA236"
         overlayOpacity={0.4}
-        title="Empowering Kenya's Next Generation"
-        description="World-Class Training in AI, Content Creation & Digital Innovation"
+        title="East Africa's Edge in the Global Market"
+        description="We train talent. We build brands. We close the gap between African creativity and global opportunity."
         link="/youth-hub"
-        linkText="Discover Programs"
+        linkText="Book a Free Strategy Call"
         textColor="#040F2D"
         btnBg="#040F2D"
         btnText="white"
@@ -84,7 +157,7 @@ function SplitHeroSection() {
         title="Strategic Brand Intelligence"
         description="AI-Enhanced PR & Reputation Management for Modern Enterprises"
         link="/organization"
-        linkText="View Services"
+        linkText="See How It Works"
         textColor="white"
         descColor="#DFA236"
         btnBg="#DFA236"

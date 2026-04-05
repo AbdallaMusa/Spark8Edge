@@ -27,7 +27,7 @@ export function StatsSection() {
   ];
 
   return (
-    <section className="min-h-screen md:snap-start w-full bg-gradient-to-br from-[#040F2D] via-[#1a2847] to-[#040F2D] flex items-center justify-center py-16 md:py-24 px-6 relative overflow-hidden">
+    <section className="w-full bg-gradient-to-br from-[#040F2D] via-[#1a2847] to-[#040F2D] flex items-center justify-center py-16 md:py-24 px-6 relative overflow-hidden">
       <div
         className="absolute inset-0 opacity-10"
         style={{

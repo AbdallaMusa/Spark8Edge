@@ -42,7 +42,7 @@ export function NewsletterSection() {
       formData.append("cf-turnstile-response", turnstileToken);
 
       const response = await fetch(
-        "https://formsubmit.co/subscribe@spark8edge.co.ke",
+        "/api/contact",
         {
           method: "POST",
           body: formData,
@@ -78,7 +78,7 @@ export function NewsletterSection() {
   };
 
   return (
-    <section className="min-h-screen md:snap-start flex flex-col bg-[#040F2D] py-20">
+    <section className="flex flex-col bg-[#040F2D] py-20">
       <div className="flex-grow w-full bg-[#DFA236] flex items-center justify-center px-6 relative overflow-hidden pt-24 pb-32">
         <div
           className="absolute inset-0 opacity-10"
@@ -128,7 +128,7 @@ export function NewsletterSection() {
                 disabled={!isVerified || isSubmitting}
                 className="px-8 py-4 bg-[#040F2D] text-white font-montserrat font-semibold text-sm uppercase tracking-wider rounded hover:bg-white hover:text-[#040F2D] transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? "Subscribing..." : "Subscribe Now"}
+                {isSubmitting ? "Subscribing..." : "Get Weekly Insights"}
               </button>
             </div>
             <TurnstileWidget onVerify={handleVerification} />

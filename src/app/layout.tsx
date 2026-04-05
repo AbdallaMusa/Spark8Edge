@@ -7,6 +7,7 @@ import { BrowserExtensionMitigation } from "@/components/BrowserExtensionMitigat
 import { ThemeProvider } from "./ThemeProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import MobileCtaBar from "@/components/MobileCtaBar";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -68,14 +69,12 @@ export default function RootLayout({
   return (
     <html 
       lang="en" 
-      className="scroll-smooth overflow-y-scroll md:snap-y md:snap-mandatory"
+      className="scroll-smooth"
       suppressHydrationWarning
     >
       <head>
         {/* Preconnect only to critical origins */}
         <link rel="preconnect" href="https://challenges.cloudflare.com" crossOrigin="anonymous" />
-        {/* DNS prefetch for other origins */}
-        <link rel="dns-prefetch" href="https://formsubmit.co" />
         {/* Cloudflare Turnstile script - load only when form is visible */}
         <Script
           src="https://challenges.cloudflare.com/turnstile/v0/api.js"
@@ -173,6 +172,38 @@ export default function RootLayout({
             `,
           }}
         />
+        {/* JSON-LD structured data for Organization and LocalBusiness */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": ["Organization", "LocalBusiness"],
+              "name": "Spark8Edge",
+              "alternateName": "Spark8 Edge",
+              "url": "https://www.spark8edge.co.ke",
+              "logo": "https://www.spark8edge.co.ke/logo.png",
+              "description": "Spark8Edge empowers Kenya's next generation through AI and strategic brand intelligence.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "KE",
+                "addressRegion": "Nairobi",
+                "addressLocality": "Nairobi"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+254727712711",
+                "contactType": "customer service",
+                "email": "info@spark8edge.co.ke"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/spark8edge",
+                "https://www.instagram.com/spark8edge",
+                "https://twitter.com/spark8edge"
+              ]
+            })
+          }}
+        />
         {/* Vercel Analytics and Speed Insights are already async */}
       </head>
       <body className={`${montserrat.variable} ${inter.variable} antialiased`}>
@@ -187,6 +218,7 @@ export default function RootLayout({
         </ThemeProvider>
         <SpeedInsights />
         <Analytics />
+        <MobileCtaBar />
       </body>
     </html>
   );
