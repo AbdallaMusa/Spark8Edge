@@ -1,11 +1,5 @@
-import { MetadataRoute } from 'next'
- 
+import type { MetadataRoute } from "next";
+import { siteConfig } from "@/config/site";
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://spark8edge.co.ke';
-  const staticRoutes = ['/', '/youth-hub', '/organization', '/about-us'];
-
-  return staticRoutes.map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-  }));
+  return ["/", "/youth-hub", "/organization", "/partnerships", "/about-us", "/guides/creative-project-brief"].map(path => ({ url: new URL(path, siteConfig.url).href }));
 }
