@@ -1,8 +1,20 @@
 import type { Metadata } from "next";
-import OfferPage from "@/components/OfferPage";
-export const metadata: Metadata = { title: "Training", description: "Ask Spark8Edge about its practical training offer, cost and upcoming availability.", alternates: { canonical: "/youth-hub" } };
+import { ContactBand } from "@/components/OfferPage";
+import { EditorialPhoto } from "@/components/EditorialPhoto";
+import ContactLink from "@/components/ContactLink";
+
+export const metadata: Metadata = { title: "Training", description: "Ask Spark8Edge about practical creative training, what it covers and upcoming availability.", alternates: { canonical: "/youth-hub" } };
 export default function Training() {
-  return <OfferPage eyebrow="For learners and early-career talent" title="One training offer." description="If you want to develop practical skills for creative or digital work, tell us what you want to learn. We’ll share the current training details so you can decide whether it’s right for you." intent="training" action="Ask about training on WhatsApp">
-    <section className="wrap section"><p className="eyebrow">Before you enrol</p><h2>Know what you’re signing up for.</h2><div className="rows"><article><span>01</span><h3>What you’ll learn</h3><p>Ask about the topics covered, the work you’ll practise and any equipment or experience you’ll need.</p></article><article><span>02</span><h3>When and where</h3><p>Ask when training is next available, how it’s delivered and how much time to set aside.</p></article><article><span>03</span><h3>What it costs</h3><p>Get the current fee and enrolment steps directly from the team before you commit.</p></article></div></section>
-  </OfferPage>;
+  return <>
+    <section className="wrap inside-head prose">
+      <h1>Training for creative and digital work</h1>
+      <p className="lede">We offer one practical training programme. If you’re starting out or looking to build on what you already know, tell us what you’d like to learn.</p>
+      <ContactLink intent="training">Ask about training on WhatsApp</ContactLink>
+    </section>
+    <section className="wrap story-grid training-body">
+      <EditorialPhoto photo="desk" />
+      <div className="prose"><h2>Before you enrol</h2><p>We’ll share what the programme covers, what you’ll practise, and the current fee and dates.</p><p>Tell us about any experience or equipment you already have. We can talk through what you’ll need before you decide.</p></div>
+    </section>
+    <ContactBand intent="training" title="Ask about the next training dates" action="Message us on WhatsApp" />
+  </>;
 }

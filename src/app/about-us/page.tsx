@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import OfferPage from "@/components/OfferPage";
-export const metadata: Metadata = { title: "About", description: "Meet Vanessa Mwando and learn why Spark8Edge is building a training and talent network in Kenya.", alternates: { canonical: "/about-us" } };
+import { ContactBand } from "@/components/OfferPage";
+import { EditorialPhoto } from "@/components/EditorialPhoto";
+
+export const metadata: Metadata = { title: "About", description: "Meet Vanessa Mwando, founder of Spark8Edge, a Nairobi training and talent business.", alternates: { canonical: "/about-us" } };
 export default function About() {
-  return <OfferPage eyebrow="About Spark8Edge" title="Skills need somewhere to go." description="Spark8Edge is a new project in Nairobi. We want practical training to lead into real work and make it easier for organisations to find people for a specific brief." intent="partner" action="Talk to us on WhatsApp">
-    <section className="wrap section founder"><Image src="/Images/22.png" width={1024} height={916} sizes="(max-width: 680px) 100vw, 400px" alt="Vanessa Mwando"/><div><p className="eyebrow">Founder & CEO</p><h2>Vanessa Mwando</h2><p>Vanessa worked in the NGO sector before starting Spark8Edge. That experience informs the kinds of partnerships she wants to build: ones where organisations can bring a specific need and people can put their skills to work.</p><p>Spark8Edge is at an early stage. If you’re interested in training, have work that needs doing or want to build something with us, we’d like to hear from you.</p></div></section>
-  </OfferPage>;
+  return <>
+    <section className="wrap story-grid about-intro">
+      <EditorialPhoto photo="founder" shape="square" preload />
+      <div className="prose"><h1>About Spark8Edge</h1><p className="lede">We started Spark8Edge in Nairobi to help people learn practical skills and connect them with organisations that have work for them to do.</p><h2>Vanessa Mwando</h2><p>Vanessa is the founder and CEO. Before starting Spark8Edge, she worked in the NGO sector. She’s building the business around training, project work and relationships with local organisations.</p></div>
+    </section>
+    <ContactBand intent="partner" title="Get in touch with Spark8Edge" action="Message us on WhatsApp" />
+  </>;
 }

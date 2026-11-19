@@ -1,9 +1,19 @@
 import type { Metadata } from "next";
-import OfferPage from "@/components/OfferPage";
-export const metadata: Metadata = { title: "Find Talent", description: "Share a project brief with Spark8Edge and ask about finding talent for your organisation in Kenya.", alternates: { canonical: "/organization" } };
-export default function Organization() {
-  return <OfferPage eyebrow="For businesses and organisations" title="Find people for the work you need done." description="Tell us what you’re working on. We’ll discuss the skills you need and whether there’s a fit in the Spark8Edge network. You decide who you work with." intent="talent" action="Discuss a brief on WhatsApp">
-    <section className="wrap section"><p className="eyebrow">How to get started</p><h2>Bring a brief, even if it’s rough.</h2><div className="rows"><article><span>01</span><h3>Describe the work</h3><p>Tell us what needs to be delivered, when you need it and what budget you’re working with.</p></article><article><span>02</span><h3>Talk through the fit</h3><p>We’ll discuss the skills that matter and what might be possible for your timeline.</p></article><article><span>03</span><h3>Make your own choice</h3><p>Where there’s a fit, you decide whether to move forward and agree on the scope before work begins.</p></article></div></section>
-    <section className="feature"><div className="wrap feature-grid"><div><p className="eyebrow">Illustrative briefs</p><h2>What could you bring?</h2></div><ul><li>A short video for an upcoming campaign.</li><li>Social content around a product launch or event.</li><li>A simple design brief for a community programme.</li></ul></div></section>
-  </OfferPage>;
+import { ContactBand } from "@/components/OfferPage";
+import { EditorialPhoto } from "@/components/EditorialPhoto";
+import ContactLink from "@/components/ContactLink";
+
+export const metadata: Metadata = { title: "Find Talent", description: "Share a project brief with Spark8Edge and ask about finding creative and digital talent in Kenya.", alternates: { canonical: "/organization" } };
+export default function Organisation() {
+  return <>
+    <section className="wrap story-grid inside-split">
+      <div className="prose"><h1>Find someone for your next project</h1><p className="lede">We’re building a network of creative and digital talent. Send us a brief and we’ll discuss whether there’s a fit. You decide who to work with.</p><ContactLink intent="talent">Share a brief on WhatsApp</ContactLink></div>
+      <EditorialPhoto photo="desk" preload />
+    </section>
+    <section className="brief-section"><div className="wrap detail-grid">
+      <div className="prose"><h2>What to include in your brief</h2><ul><li>What you need made or delivered</li><li>When you need it</li><li>Your budget or budget range</li></ul><p>A few lines on WhatsApp are enough to start.</p></div>
+      <aside className="brief-example"><h3>Example brief</h3><p>“We’re running a community event and need someone to film it and edit a short highlight video. We have a date and a budget, but we’re open to ideas on the format.”</p></aside>
+    </div></section>
+    <ContactBand intent="talent" title="Have a project in mind?" action="Share a brief on WhatsApp" />
+  </>;
 }
