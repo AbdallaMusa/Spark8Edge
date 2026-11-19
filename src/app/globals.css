@@ -68,7 +68,8 @@ h3 { font-size: 1.22rem; }
 .editorial-photo { margin: 0; min-width: 0; }
 .editorial-photo img { display: block; width: 100%; height: auto; aspect-ratio: 3/2; object-fit: cover; border-radius: .7rem; background: var(--tint); }
 .editorial-photo figcaption { margin-top: .55rem; color: var(--body); font-size: .82rem; }
-.photo-square img { aspect-ratio: 1; object-position: center 34%; }
+.photo-founder img { aspect-ratio: auto; }
+.founder-role { font-size: .9rem; font-weight: 750; margin-top: .35rem; }
 .pathways { background: var(--tint); }
 .pathway-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding-block: 1.5rem 1.75rem; }
 .pathway-grid article + article { border-left: 1px solid var(--line); padding-inline-start: clamp(1rem, 3vw, 2.3rem); }

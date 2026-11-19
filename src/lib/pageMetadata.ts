@@ -3,6 +3,7 @@ import { siteConfig } from "@/config/site";
 
 const images = {
   home: { url: "/share/home.jpg", alt: "People talking on a hillside in Nairobi" },
+  founder: { url: "/share/founder.jpg", alt: "Vanessa Mwando, founder and CEO of Spark8Edge" },
   talent: { url: "/share/talent.jpg", alt: "Creative work at a desk in Nairobi" },
   partnerships: { url: "/share/partnerships.jpg", alt: "The Nairobi skyline" },
 };

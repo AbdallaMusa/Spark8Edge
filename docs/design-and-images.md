@@ -9,6 +9,6 @@ Design references consulted via GitHub: [Anthropic Frontend Design](https://gith
 | `nairobi-conversation.webp` | [People Conversing on Hilltop in Nairobi](https://www.pexels.com/photo/people-conversing-on-hilltop-in-nairobi-30661416/), MC G’Zay |
 | `nairobi-desk.webp` | [Man Working on Computer in an Office](https://www.pexels.com/photo/man-working-on-computer-in-an-office-19805876/), Naboth Otieno |
 | `nairobi-skyline.webp` | [Aerial View of Nairobi’s Modern Cityscape](https://www.pexels.com/photo/aerial-view-of-nairobi-s-modern-cityscape-29069429/), Ken Mwaura |
-| `vanessa-mwando.webp` | Resized from the founder portrait already in the Spark8Edge repo (`public/Images/22.png`). |
+| `vanessa-mwando-portrait.webp` and `share/founder.jpg` | User-supplied `DSC09663.jpg`, cropped to remove other people and signage. Existing wall softened; no generative face or outfit edits. Only the edited portrait is used from the event photos. |
 
 The Nairobi photographs are contextual imagery under the [Pexels license](https://www.pexels.com/license/). They do not depict Spark8Edge trainees, staff or clients. Replace them with permissioned photographs of real company work as it becomes available. The Manrope license is next to the font in `public/fonts/`.
