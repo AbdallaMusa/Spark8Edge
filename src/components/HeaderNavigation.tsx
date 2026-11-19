@@ -11,7 +11,7 @@ export function HeaderNavigation() {
   const menu = useRef<HTMLDetailsElement>(null);
   const toggle = useRef<HTMLElement>(null);
   const items = navigationLinks.map(([label, href]) => (
-    <Link key={href} href={href} aria-current={pathname === href ? "page" : undefined}
+    <Link key={href} href={href} prefetch={false} aria-current={pathname === href ? "page" : undefined}
       onClick={() => { if (menu.current?.open) menu.current.open = false; }}>{label}</Link>
   ));
 

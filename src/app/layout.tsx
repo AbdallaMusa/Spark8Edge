@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: { default: "Spark8Edge | Training, Talent and Partnerships in Nairobi", template: "%s | Spark8Edge" },
   description: siteConfig.description,
-  openGraph: { siteName: "Spark8Edge", type: "website", locale: "en_KE", images: [{ url: "/photos/nairobi-conversation.webp", width: 1440, height: 960, alt: "People talking outdoors in Nairobi" }] },
+  openGraph: { siteName: "Spark8Edge", type: "website", locale: "en_KE" },
   twitter: { card: "summary_large_image" },
   ...(process.env.VERCEL_ENV === "preview" ? { robots: { index: false, follow: false } } : {}),
   icons: { icon: "/favicon.ico", apple: "/apple-touch-icon.png" },

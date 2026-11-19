@@ -28,7 +28,7 @@ With the production build running in another terminal, run `npm run test:smoke`.
 
 1. In the existing project, check which deployment owns `www.spark8edge.co.ke`, the production branch, and the linked repo (`AbdallaMusa/Spark8Edge`). Do not move domains or change DNS just to produce a preview.
 2. Use the Next.js preset, repo root, Node.js 22, `npm ci`, and `npm run build`. The redesign does not use the legacy Turnstile and form variables. Leave rollback configuration intact until the new release is stable.
-3. Deploy the feature branch as a Preview. Verify the exact commit, all five routes, WhatsApp drafts, the call and email links, and the actual number with the owner. Keep preview protection as configured.
+3. Deploy the feature branch as a Preview. Verify the exact commit, all six content routes, WhatsApp drafts, the call and email links, and the actual number with the owner. Keep preview protection as configured.
 4. Record the current production deployment as the rollback target. After preview verification, merge to the confirmed production branch and verify the production deployment and custom-domain alias on Vercel.
 
 For engagement, track real incoming WhatsApp conversations by intent, not just visits. A click opens a draft; it does not count as an enquiry until the visitor sends it.

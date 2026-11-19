@@ -5,18 +5,19 @@ import { pageMetadata } from "@/lib/pageMetadata";
 export const metadata = pageMetadata("/guides/creative-project-brief", "How to Write a Creative Project Brief", "A practical brief template for video, design or community campaigns. Define the audience, deliverables, budget and approvals before finding talent.", "talent");
 
 export default function CreativeProjectBrief() {
-  return <article className="wrap guide">
-    <Link className="text-link" href="/organization">Back to finding talent</Link>
-    <h1>How to write a creative project brief</h1>
-    <p className="lede">A brief can be a short WhatsApp message. Give the person reading it enough to estimate the work: what you want made, who it’s for, and what’s already decided.</p>
-    <a className="button" href="/downloads/creative-project-brief.txt" download>Download the brief template</a>
-    <div className="guide-body prose">
-      <h2>Start with the audience</h2><p>Who should see this, and what do you want them to do afterwards? For an event video, a recap for attendees calls for different footage from a recruitment video for the next event.</p>
-      <h2>List what you need back</h2><p>Give each deliverable its own line. A 60-second vertical video with captions and a landscape cut are two outputs. Say where you’ll publish them, and whether you need editable files.</p>
-      <h2>Share what’s fixed</h2><p>Add the date, budget range and location. Name one person to collect feedback and approve the work. If permissions, filming consent or brand assets are needed, say who’s handling those before work starts.</p>
-      <aside className="brief-example"><h3>Example: a community event recap</h3><p>A Nairobi youth organisation wants one 60-second vertical video and three stills for its socials. The organisation will handle venue access and filming permissions. The brief gives the event date, the first-cut deadline, a budget range and one contact for approvals. This is a sample brief, not client work.</p></aside>
-      <h2>Ready to share yours?</h2><p>Send the rough version. We can discuss what kind of experience the brief calls for and whether there’s a fit in the network.</p>
-      <ContactLink intent="talent">Send your brief on WhatsApp</ContactLink>
-    </div>
+  return <article>
+    <section className="hero-field" aria-labelledby="guide-title"><div className="wrap guide">
+      <Link prefetch={false} className="text-link" href="/organization">Back to finding talent</Link>
+      <p className="eyebrow">Spark8Edge field guide</p><h1 id="guide-title">How to write a creative project brief</h1>
+      <p className="lede">A brief can be a short WhatsApp message. Say what you want made, who it’s for and what’s already decided.</p>
+      <a className="button" href="/downloads/creative-project-brief.txt" download>Download the brief template</a>
+    </div></section>
+    <section className="wrap detail-grid" aria-labelledby="guide-audience"><h2 id="guide-audience">Start with the audience</h2><p>Who should see this, and what do you want them to do afterwards? A recap for people who came to an event calls for different footage from a video inviting people to the next one.</p></section>
+    <section className="wrap detail-grid section-rule" aria-labelledby="guide-deliverables"><h2 id="guide-deliverables">List what you need back</h2><p>A 60-second vertical video with captions and a landscape cut are two outputs. Give each its own line. Say where you’ll publish them and whether you need the editable files.</p></section>
+    <section className="brief-section" aria-labelledby="guide-constraints"><div className="wrap detail-grid">
+      <div className="prose"><h2 id="guide-constraints">Share what’s fixed</h2><p>Include the date, budget range and location. Name one person to collect feedback and approve the work. Say who will arrange consent, venue access or brand files before work starts.</p></div>
+      <aside className="brief-example"><h3>Sample: a community event recap</h3><p>A Nairobi youth organisation needs one 60-second vertical video and three stills for its social channels. The organisation will handle venue access and filming permission. The brief includes the event date and first-cut deadline. This is a sample, not client work.</p></aside>
+    </div></section>
+    <section className="wrap detail-grid" aria-labelledby="guide-send"><h2 id="guide-send">Ready to share yours?</h2><div className="prose"><p>Send the rough version. We can discuss what kind of experience the brief calls for and whether there’s a fit in the network.</p><ContactLink intent="talent">Send your brief on WhatsApp</ContactLink></div></section>
   </article>;
 }
