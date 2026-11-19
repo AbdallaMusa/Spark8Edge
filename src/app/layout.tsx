@@ -7,7 +7,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: { default: "Spark8Edge | Training, Talent and Partnerships in Nairobi", template: "%s | Spark8Edge" },
   description: siteConfig.description,
-  openGraph: { siteName: "Spark8Edge", type: "website", locale: "en_KE" },
+  openGraph: { siteName: "Spark8Edge", type: "website", locale: "en_KE", images: [{ url: "/photos/nairobi-conversation.webp", width: 1440, height: 960, alt: "People talking outdoors in Nairobi" }] },
+  twitter: { card: "summary_large_image" },
   icons: { icon: "/favicon.ico", apple: "/apple-touch-icon.png" },
 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {

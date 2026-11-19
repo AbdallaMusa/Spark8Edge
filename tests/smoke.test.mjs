@@ -23,6 +23,13 @@ for (const [path, heading, intent, photo] of routes) {
     assert.doesNotMatch(text, /href="#"|\+254\*|Placeholder for client logos|FinTech Nairobi/);
   });
 }
+test('header wordmark has an accessible home link and independent reveal layers', async () => {
+  const text = await (await fetch(base + '/')).text();
+  assert.ok(/<a[^>]*aria-label="Spark8Edge home"[^>]*href="\/"/.test(text));
+  for (const part of ['left', 'eight', 'right']) {
+    assert.ok(new RegExp(`<span[^>]*class="[^\"]*wordmark-${part}[^\"]*"`).test(text), `Missing ${part} reveal layer`);
+  }
+});
 test('canonical sitemap includes the partnerships page', async () => {
   const response = await fetch(base + '/sitemap.xml');
   assert.equal(response.status, 200);

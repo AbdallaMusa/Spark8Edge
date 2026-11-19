@@ -5,7 +5,11 @@ import { phone, displayPhone, email } from "@/config/contact.mjs";
 const links = [["Training", "/youth-hub"], ["Find talent", "/organization"], ["Partnerships", "/partnerships"], ["About", "/about-us"]];
 export function SiteHeader() {
   return <><a href="#main" className="skip">Skip to content</a><header className="header"><div className="wrap header-inner">
-    <Link className="wordmark" href="/" aria-label="Spark8Edge home">Spark<span>8</span>Edge</Link>
+    <Link className="wordmark wordmark-reveal" href="/" aria-label="Spark8Edge home">
+      <span className="wordmark-slot" aria-hidden="true"><span className="wordmark-left">Spark</span></span>
+      <span className="wordmark-eight" aria-hidden="true">8</span>
+      <span className="wordmark-slot" aria-hidden="true"><span className="wordmark-right">Edge</span></span>
+    </Link>
     <nav aria-label="Main navigation">{links.map(([name, url]) => <Link key={url} href={url}>{name}</Link>)}</nav>
     <ContactLink intent="partner">Talk to us</ContactLink>
   </div></header></>;
