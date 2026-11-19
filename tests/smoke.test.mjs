@@ -30,6 +30,25 @@ test('header wordmark has an accessible home link and independent reveal layers'
     assert.ok(new RegExp(`<span[^>]*class="[^\"]*wordmark-${part}[^\"]*"`).test(text), `Missing ${part} reveal layer`);
   }
 });
+test('mobile navigation exposes real links behind a labelled control', async () => {
+  const html = await (await fetch(base + '/')).text();
+  const menu = html.match(/<details[^>]*class="mobile-menu"[\s\S]*?<\/details>/)?.[0];
+  assert.ok(menu, 'Expected a native disclosure for mobile navigation');
+  assert.match(menu, /<summary[^>]*>[\s\S]*?Menu/);
+  for (const path of ['/youth-hub', '/organization', '/partnerships', '/about-us']) {
+    assert.ok(menu.includes(`href="${path}"`), `Menu is missing ${path}`);
+  }
+});
+test('the project brief guide is linked and has a canonical search result', async () => {
+  const home = await (await fetch(base + '/')).text();
+  assert.ok(home.includes('href="/guides/creative-project-brief"'));
+  const response = await fetch(base + '/guides/creative-project-brief');
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.ok(html.includes('https://www.spark8edge.co.ke/guides/creative-project-brief'));
+  assert.match(html, /property="og:image" content="[^\"]*talent\.jpg"/);
+  assert.ok(html.includes('Download the brief template'));
+});
 test('canonical sitemap includes the partnerships page', async () => {
   const response = await fetch(base + '/sitemap.xml');
   assert.equal(response.status, 200);

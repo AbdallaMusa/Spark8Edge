@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/pageMetadata";
 import ContactLink from "@/components/ContactLink";
 import { ContactBand } from "@/components/OfferPage";
 import { EditorialPhoto } from "@/components/EditorialPhoto";
 
-export const metadata: Metadata = { title: "Training and Project Partnerships in Kenya", description: "Discuss training sponsorship, mentorship or project briefs with Spark8Edge in Nairobi.", alternates: { canonical: "/partnerships" } };
+export const metadata = pageMetadata("/partnerships", "Training and Community Partnerships in Kenya", "Partner with Spark8Edge in Nairobi. Explore training sponsorship, mentorship, and creative project briefs with local organisations.", "partnerships");
 export default function Partnerships() {
   return <>
     <section className="wrap story-grid inside-split">

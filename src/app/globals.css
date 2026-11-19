@@ -1,4 +1,10 @@
-@import "tailwindcss";
+*, *::before, *::after { box-sizing: border-box; }
+h1, h2, h3, p, dl, dd, ul, ol { margin: 0; }
+a { color: inherit; }
+.header a, .footer a, .button { text-decoration: none; }
+.footer a.text-link, .call { text-decoration: underline; }
+button, summary { font: inherit; color: inherit; }
+
 
 @font-face {
   font-family: Manrope;
@@ -25,7 +31,7 @@ h3 { font-size: 1.22rem; }
 .wrap { width: min(1180px, calc(100% - 4rem)); margin-inline: auto; }
 .skip { position: absolute; left: 1rem; top: 1rem; z-index: 5; transform: translateY(-170%); background: white; padding: .5rem 1rem; }
 .skip:focus { transform: none; }
-.header { border-bottom: 1px solid var(--line); }
+.header { position: relative; z-index: 2; background: var(--canvas); border-bottom: 1px solid var(--line); }
 .header-inner { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 .wordmark { font-size: 1.65rem; font-weight: 800; letter-spacing: -.07em; white-space: nowrap; }
 .wordmark span { color: #936114; }
@@ -40,7 +46,19 @@ h3 { font-size: 1.22rem; }
 }
 .header nav { display: flex; flex-wrap: wrap; gap: .3rem clamp(.8rem, 2.7vw, 2.25rem); font-weight: 700; font-size: .94rem; }
 .header nav a, .text-link, .call { display: inline-flex; align-items: center; min-height: 44px; }
-.header nav a:hover, .footer a:hover { text-decoration: underline; }
+.footer a:hover { text-decoration: underline; }
+.desktop-nav a { position: relative; }
+.desktop-nav a::after { position: absolute; content: ""; inset: auto 0 .33rem; height: 2px; background: #936114; transform: scaleX(0); transform-origin: left; }
+.desktop-nav a:is(:hover, :focus-visible, [aria-current="page"])::after { transform: scaleX(1); }
+.mobile-menu { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .desktop-nav a::after { transition: transform 180ms ease; }
+  .wordmark-reveal:is(:hover, :focus-visible) .wordmark-left { animation-name: spark-replay; animation-delay: 0ms; animation-duration: 500ms; }
+  .wordmark-reveal:is(:hover, :focus-visible) .wordmark-right { animation-name: edge-replay; animation-delay: 0ms; animation-duration: 500ms; }
+  @keyframes spark-replay { from { transform: translateX(105%); } to { transform: translateX(0); } }
+  @keyframes edge-replay { from { transform: translateX(-105%); } to { transform: translateX(0); } }
+}
+
 .button { min-height: 48px; width: fit-content; display: inline-flex; align-items: center; justify-content: center; padding: .65rem 1.1rem; background: var(--gold); color: var(--ink); font-size: .94rem; font-weight: 800; border-radius: .45rem; }
 .button:hover { background: #ffd178; }
 .text-link, .call { font-weight: 750; text-decoration: underline; width: fit-content; }
@@ -87,8 +105,25 @@ h3 { font-size: 1.22rem; }
 .section .button { margin-top: 1rem; }
 @media (max-width: 760px) {
   .wrap { width: calc(100% - 2rem); }
-  .header-inner { display: grid; grid-template-columns: 1fr auto; gap: .2rem .7rem; padding-block: .5rem; }
-  .header nav { grid-row: 2; grid-column: 1 / -1; justify-content: space-between; gap: .1rem .65rem; }
+  .header-inner { min-height: 66px; }
+  .header .desktop-nav, .desktop-contact { display: none; }
+  .mobile-menu { display: block; }
+  .mobile-menu summary { list-style: none; display: flex; align-items: center; gap: .55rem; cursor: pointer; min-height: 44px; padding: 0 .7rem; border: 1px solid var(--line); border-radius: .4rem; font-size: .93rem; font-weight: 780; }
+  .mobile-menu summary::-webkit-details-marker { display: none; }
+  .mobile-menu summary:focus-visible { outline: 3px solid #2572bc; outline-offset: 3px; }
+  .menu-glyph { display: grid; width: 16px; gap: 4px; }
+  .menu-glyph i { height: 2px; background: currentColor; border-radius: 2px; }
+  .mobile-menu[open] .menu-glyph i:first-child { transform: translateY(3px) rotate(45deg); }
+  .mobile-menu[open] .menu-glyph i:last-child { transform: translateY(-3px) rotate(-45deg); }
+  .header .mobile-menu nav { display: grid; position: absolute; inset: 100% 0 auto; padding: .6rem 1rem 1rem; gap: .15rem; background: var(--canvas); border-bottom: 1px solid var(--line); box-shadow: 0 12px 20px #13243e14; }
+  .mobile-menu nav a:not(.button) { padding: .25rem .5rem; border-radius: .35rem; }
+  .mobile-menu nav a:is(:hover,:focus-visible,[aria-current="page"]):not(.button) { background: var(--tint); }
+  .mobile-menu nav .button { margin: .55rem .5rem 0; }
+  @media (prefers-reduced-motion: no-preference) {
+    .menu-glyph i { transition: transform 180ms ease; }
+    .mobile-menu[open] nav { animation: menu-in 200ms ease-out both; }
+    @keyframes menu-in { from { opacity: 0; transform: translateY(-7px); } to { opacity: 1; transform: translateY(0); } }
+  }
   .home-intro, .story-grid, .detail-grid { grid-template-columns: 1fr; }
   .home-story .editorial-photo, .about-intro .editorial-photo { max-width: 24rem; }
   .about-intro .prose { grid-row: 1; }
@@ -99,7 +134,6 @@ h3 { font-size: 1.22rem; }
   .footer-grid > div:first-child { grid-column: 1 / -1; }
 }
 @media (max-width: 370px) {
-  .header nav { justify-content: flex-start; font-size: .87rem; }
   .footer-grid { grid-template-columns: 1fr; }
 }
 
@@ -123,3 +157,15 @@ h3 { font-size: 1.22rem; }
   @keyframes answer-in { from { opacity: .65; transform: translateY(-3px); } to { opacity: 1; transform: translateY(0); } }
 }
 @media (max-width: 760px) { .example-grid, .steps { grid-template-columns: 1fr; } }
+
+.hero-field { background: #f5f2eb; }
+.hero-field .home-intro { padding-bottom: clamp(2rem, 5vw, 4rem); }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem 1.15rem; }
+.hero-field .editorial-photo img { border-radius: .45rem .45rem 1.55rem .45rem; }
+.guide { padding-block: clamp(2rem, 5vw, 5rem); }
+.guide h1 { max-width: 21ch; margin-top: .65rem; }
+.guide .lede { margin: 1rem 0 1.3rem; font-size: 1.16rem; }
+.guide-body { max-width: 48rem; margin-top: 2rem; }
+.guide-body h2 { margin-top: 1.7rem; font-size: clamp(1.4rem, 2.8vw, 2rem); }
+.guide-body .brief-example { background: var(--tint); margin-top: 1.4rem; }
+.guide-body .button { margin-top: 1rem; }

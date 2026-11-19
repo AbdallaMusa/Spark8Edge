@@ -2,7 +2,8 @@ import Link from "next/link";
 import ContactLink from "./ContactLink";
 import { phone, displayPhone, email } from "@/config/contact.mjs";
 
-const links = [["Training", "/youth-hub"], ["Find talent", "/organization"], ["Partnerships", "/partnerships"], ["About", "/about-us"]];
+import { navigationLinks as links } from "@/config/site";
+import { HeaderNavigation } from "./HeaderNavigation";
 export function SiteHeader() {
   return <><a href="#main" className="skip">Skip to content</a><header className="header"><div className="wrap header-inner">
     <Link className="wordmark wordmark-reveal" href="/" aria-label="Spark8Edge home">
@@ -10,8 +11,7 @@ export function SiteHeader() {
       <span className="wordmark-eight" aria-hidden="true">8</span>
       <span className="wordmark-slot" aria-hidden="true"><span className="wordmark-right">Edge</span></span>
     </Link>
-    <nav aria-label="Main navigation">{links.map(([name, url]) => <Link key={url} href={url}>{name}</Link>)}</nav>
-    <ContactLink intent="partner">Talk to us</ContactLink>
+    <HeaderNavigation />
   </div></header></>;
 }
 export function SiteFooter() {

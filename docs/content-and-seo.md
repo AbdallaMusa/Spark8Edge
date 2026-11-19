@@ -7,4 +7,6 @@
 
 Implementation references: [SEO audit and copywriting](https://github.com/coreyhaines31/marketingskills), [Vercel web guidelines](https://github.com/vercel-labs/web-interface-guidelines), [Vercel transition patterns](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-view-transitions). The wordmark is CSS-only because it is an element reveal, not a page transition. The FAQ uses native disclosure controls and both effects respect reduced motion.
 
+The creative brief guide is linked from the homepage and talent page. It is also in the canonical sitemap and includes a downloadable plain-text template. Social preview images are local 1200 × 630 JPEGs made from the credited site photographs. Vercel Preview builds request `noindex`; production canonicals point to the `www` domain.
+
 Submit the canonical sitemap through Search Console after production release. Replace illustrative work with permissioned projects when available.
